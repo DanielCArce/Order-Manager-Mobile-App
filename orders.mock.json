@@ -1,0 +1,70 @@
+[
+    { "id": 1,
+    "isFE":true,
+     "client": "Codical Dos Mil S.A.",
+     "receivedDate": "31/12/2022",
+    "estimatedDate": "15/01/2023",
+     "products":[
+        {"id":1, "name":"Oro Vino Redondo", "quantity":200, "price":97.20,"size": 21, "type":"B4","unit":"Pares" 
+        },{"id":2, "name":"Café Oro Redondo", "quantity":500, "price":98,"size": 38, "type":"B4", "unit":"Pares" 
+        },{"id":3, "name":"Negro Redondo", "quantity":500, "price":105,"size": 38, "type":"B4", "unit":"Pares"
+        },{"id":4, "name":"Café Oro Redondo", "quantity":200, "price":125,"size": 45, "type":"B4", "unit":"Pares"
+        },{"id":5, "name":"Oro Vino Redondo", "quantity":500, "price":105,"size": 38, "type":"B4", "unit":"Pares"}
+
+    ]}, 
+    { "id": 2,"isFE":false, "client": "Patines Michael Music S.A.", "receivedDate": "05/01/2023", "estimatedDate": "15/01/2023","products":[
+        {"id":1, "name":"Verde Fosforecente Plano", "quantity":3, "price":5900,"size": 45, "type":"B1","unit":"Pares"}
+    ]},
+    { "id": 3,
+    "isFE":true,
+     "client": "Codical Dos Mil S.A.",
+     "receivedDate": "31/12/2022",
+    "estimatedDate": "15/01/2023",
+     "products":[
+        {"id":1, "name":"Oro Vino Redondo", "quantity":200, "price":97.20,"size": 21, "type":"B4","unit":"Pares" 
+        },{"id":2, "name":"Café Oro Redondo", "quantity":500, "price":98,"size": 38, "type":"B4", "unit":"Pares" 
+        },{"id":3, "name":"Negro Redondo", "quantity":500, "price":105,"size": 38, "type":"B4", "unit":"Pares"
+        },{"id":4, "name":"Café Oro Redondo", "quantity":200, "price":125,"size": 45, "type":"B4", "unit":"Pares"
+        },{"id":5, "name":"Oro Vino Redondo", "quantity":500, "price":105,"size": 38, "type":"B4", "unit":"Pares"}
+
+    ]},
+    { "id": 4,
+    "isFE":true,
+     "client": "Codical Dos Mil S.A.",
+     "receivedDate": "31/12/2022",
+    "estimatedDate": "15/01/2023",
+     "products":[
+        {"id":1, "name":"Oro Vino Redondo", "quantity":200, "price":97.20,"size": 21, "type":"B4","unit":"Pares" 
+        },{"id":2, "name":"Café Oro Redondo", "quantity":500, "price":98,"size": 38, "type":"B4", "unit":"Pares" 
+        },{"id":3, "name":"Negro Redondo", "quantity":500, "price":105,"size": 38, "type":"B4", "unit":"Pares"
+        },{"id":4, "name":"Café Oro Redondo", "quantity":200, "price":125,"size": 45, "type":"B4", "unit":"Pares"
+        },{"id":5, "name":"Oro Vino Redondo", "quantity":500, "price":105,"size": 38, "type":"B4", "unit":"Pares"}
+
+    ]},
+    { "id": 5,
+    "isFE":true,
+     "client": "Codical Dos Mil S.A.",
+     "receivedDate": "31/12/2022",
+    "estimatedDate": "15/01/2023",
+     "products":[
+        {"id":1, "name":"Oro Vino Redondo", "quantity":200, "price":97.20,"size": 21, "type":"B4","unit":"Pares" 
+        },{"id":2, "name":"Café Oro Redondo", "quantity":500, "price":98,"size": 38, "type":"B4", "unit":"Pares" 
+        },{"id":3, "name":"Negro Redondo", "quantity":500, "price":105,"size": 38, "type":"B4", "unit":"Pares"
+        },{"id":4, "name":"Café Oro Redondo", "quantity":200, "price":125,"size": 45, "type":"B4", "unit":"Pares"
+        },{"id":5, "name":"Oro Vino Redondo", "quantity":500, "price":105,"size": 38, "type":"B4", "unit":"Pares"}
+
+    ]},
+    { "id": 6,
+    "isFE":true,
+     "client": "Codical Dos Mil S.A.",
+     "receivedDate": "31/12/2022",
+    "estimatedDate": "15/01/2023",
+     "products":[
+        {"id":1, "name":"Oro Vino Redondo", "quantity":200, "price":97.20,"size": 21, "type":"B4","unit":"Pares" 
+        },{"id":2, "name":"Café Oro Redondo", "quantity":500, "price":98,"size": 38, "type":"B4", "unit":"Pares" 
+        },{"id":3, "name":"Negro Redondo", "quantity":500, "price":105,"size": 38, "type":"B4", "unit":"Pares"
+        },{"id":4, "name":"Café Oro Redondo", "quantity":200, "price":125,"size": 45, "type":"B4", "unit":"Pares"
+        },{"id":5, "name":"Oro Vino Redondo", "quantity":500, "price":105,"size": 38, "type":"B4", "unit":"Pares"}
+
+    ]}
+] 
