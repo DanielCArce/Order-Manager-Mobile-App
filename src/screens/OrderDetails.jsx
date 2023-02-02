@@ -33,14 +33,14 @@ const OrderDetails = ({ navigation, route }) => {
       </View>
       <View style={ styles.table}>
         <Text style={ styles.tableHeader}>Total Factura </Text>
-        <Text>{ orderToDetails.isFE ? Intl.NumberFormat('es').format(orderTotal +(orderTotal*0.13)) : 0}</Text>
+        <Text>{ orderToDetails.isFE ? Intl.NumberFormat('es').format(orderTotal +(orderTotal*0.13)) : orderTotal}</Text>
       </View>
     </View>
   )
 }
 const styles = StyleSheet.create({
   container: {
-    padding: '12px',
+    padding: 12,
     // backgroundColor: '#323232',
     // borderColor: 'black',
     // borderRadius: '4',

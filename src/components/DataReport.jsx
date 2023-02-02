@@ -5,10 +5,10 @@ const DataReport = ({name, data}) => {
   return (
     <View style={styles.container}>
           <View style={styles.card}>
-              <Text>
+        <Text style={ styles.text}>
                 {name}
               </Text>
-              <Text>
+              <Text style={styles.content}>
                   {Intl.NumberFormat('es').format(data)}
               </Text>
       </View>
@@ -17,12 +17,24 @@ const DataReport = ({name, data}) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        margin: '15',
-        padding: '8',
-        backgroundColor: 'white',
+  container: {
+    marginVertical: 8,
+    paddingHorizontal: 8,
+    paddingVertical:8,
+    backgroundColor: 'white',
     color: '#6df740',
     borderColor: '#363636',
-        borderWidth:'6'
-}})
+    borderWidth: 2
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: 'bold'
+  },
+  content:{
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: 200,
+  }
+})
 export default DataReport

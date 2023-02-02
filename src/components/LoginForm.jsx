@@ -1,6 +1,6 @@
 import React, { useLayoutEffect } from 'react'
 import {useFormik} from 'formik'
-import {StyleSheet, View,Text,Button, TextInput} from 'react-native'
+import {StyleSheet, View,Text,Button, TextInput, TouchableOpacity} from 'react-native'
 import LoginFormSchema from './../schemas/LoginForm.Schema';
 import useAuth from './../hooks/useAuth';
 function LoginForm({navigation}) {
@@ -31,7 +31,9 @@ function LoginForm({navigation}) {
               <Text style={styles.warningMessage}>{errors.password}</Text>
           </View>
           <View>
-              <Button title='Sign In' onPress={handleSubmit}/>
+              <TouchableOpacity style={ styles.button} onPress={handleSubmit}>
+                  <Text style={ styles.buttonText}>Ingresar</Text>
+              </TouchableOpacity>
           </View>
     </View>
   )
@@ -41,16 +43,28 @@ const styles = StyleSheet.create({
         color: 'red',
         fontWeight:'bold'
     },
+    button: {
+        paddingHorizontal: 18,
+        paddingVertical: 12,
+        textAlign: 'center',
+        backgroundColor: '#0080c0',
+        
+    }, buttonText: {
+        color: '#ffffff',
+        fontSize: 21,
+        fontWeight: 700,
+    },
     inputContainer: {
-        marginBottom: '15',
+        marginBottom: 12,
         flexDirection:'column'
     },
     inputText: {
-        borderWidth: '1px',
+        borderWidth: 1,
         borderColor: 'gray',
-        marginTop: '8',
-        borderRadius: '4',
-        padding:'3'
+        marginTop: 8,
+        borderRadius: 4,
+        paddingHorizontal: 8,
+        paddingVertical:4
     }
 })
 export default LoginForm

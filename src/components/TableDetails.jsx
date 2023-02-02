@@ -62,16 +62,16 @@ const styles = StyleSheet.create({
     }, tablePattern: {
         backgroundColor: 'lightblue',
         color: 'black',
-        fontWeight:'500'
+        fontWeight:500
     },
     tableUnPattern: {
         backgroundColor: 'white',
         color: 'black',
-        fontWeight: '400',
-        paddingVertical:'15'
+        fontWeight: 400,
+        paddingVertical:15
     },
     tableHeader: {
-        fontWeight: '800',
+        fontWeight: 800,
         color: 'black',
         textAlign:'center'
     }

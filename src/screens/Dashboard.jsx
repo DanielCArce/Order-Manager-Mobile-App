@@ -11,13 +11,21 @@ const Dashboard = ({ navigation }) => {
   const renderItem = ({ item }) => <OrderCard navigation={navigation} key={item.id} order={{...item}}/>
   return (
     <View style={styles.container}>
-      <FlatList data={state.orders} renderItem={renderItem} />
+      <Text style={styles.header }>Orders</Text>
+      <FlatList data={state.orders} renderItem={renderItem} collapsable="true"/>
     </View>
   )
 }
 const styles = StyleSheet.create({
   container: {
-    padding:'14px'
+    padding: '14px',
+    justifyContent: 'space-between',
+    gap:'8px'
+  },
+  header: {
+    fontWeight: 'bold',
+    textAlign: 'left',
+    fontSize:'26px'
   }
 })
 
