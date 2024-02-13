@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const ClientsProviders = () => {
+const ResetPassword = () => {
   return (
     <View>
-      <Text>Clients&Providers</Text>
+      <Text>ResetPassword</Text>
     </View>
   )
 }
 
-export default ClientsProviders
+export default ResetPassword
