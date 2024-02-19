@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#008040"
+      "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -36,6 +36,7 @@
         "projectId": "dabe8104-c2af-48bf-bea6-8eabdc0d497a"
       }
     },
-    "owner": "danielcarce"
+    "owner": "danielcarce",
+    "scheme":"finaapp"
   }
 }
