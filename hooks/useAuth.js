@@ -14,6 +14,9 @@ export default function useAuth() {
         navigation.navigate('Login')
         
     }
+    const requestNewPassword = (email) =>{
+
+    }
     const isAuthenticated = ()=>{
         return dispatch({type:ACTIONS.VerifyToken})
     }

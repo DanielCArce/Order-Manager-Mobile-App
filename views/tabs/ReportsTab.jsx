@@ -1,11 +1,15 @@
-import { View, Text } from 'react-native'
+import { View, Text, SafeAreaView,StatusBar, Platform } from 'react-native'
 import React from 'react'
-
+import AppHeader from './../../components/AppHeader';
 const ReportsTab = () => {
   return (
-    <View>
-      <Text>ReportsTab</Text>
-    </View>
+    <SafeAreaView>
+      <View style={Platform.OS != 'ios'? {paddingTop:0}: null }>
+        <AppHeader />
+        <Text>Reports</Text>
+      </View>
+      <StatusBar/>
+    </SafeAreaView>
   )
 }
 

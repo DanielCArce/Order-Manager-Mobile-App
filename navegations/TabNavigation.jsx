@@ -21,7 +21,7 @@ function TabNavigation({ children }){
                 tabBarIcon: IconForTab.bind(this,{name:'barschart'}), tabBarLabel:'Reports'}} />
             <Tab.Screen name="ClientsProvidersTab" component={ClientsProvidersTab} options={{ tabBarActiveBackgroundColor: '#d7d7d7', tabBarIcon: IconForTab.bind(this,{name:'user'}),tabBarLabel:'Clients & Providers' }}/>
             <Tab.Screen name="SettingsTab" component={SettingsTab} options={{tabBarIcon:IconForTab.bind(this,{name:'setting'}), tabBarLabel:'Settings'}}/>
-        </Tab.Navigator>
+            </Tab.Navigator>
     )
 }
 

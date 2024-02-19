@@ -4,7 +4,7 @@ import useAuth from '../../hooks/useAuth'
 import { Formik } from 'formik';
 import LoginScheme from './../../schemas/Login';
 import { useNavigation } from '@react-navigation/native';
-
+import AppHeader from '../../components/AppHeader'
 const LoginScreen = () => {
   const { login } = useAuth()
   const navigation = useNavigation()
@@ -18,14 +18,7 @@ const LoginScreen = () => {
     }}>
       {({ isValid,errors, handleChange, handleBlur, handleSubmit, values }) => {
         return (<>
-          <View style={{alignSelf:'center',marginTop:40}}>
-              <View>
-                <Text style={{fontSize:40, fontWeight:800, textAlign:'center'}}>FINA</Text>
-              </View>
-              <View>
-                <Text>Finances & Accounting</Text>
-              </View>
-            </View>
+          <AppHeader screen='Login' />
           <View style={s.container}>
             <View style={s.formSection}>
               <Text style={s.formHeader}>Login</Text>
@@ -42,7 +35,7 @@ const LoginScreen = () => {
               <Pressable onPress={handleSubmit} disabled={!isValid} style={isValid ? {...s.formButtonContainer,backgroundColor: '#0080c0'}: {...s.formButtonContainer,backgroundColor:'#c0c0c0'}}>
                 <Text style={s.formButtonText}>Starting...</Text>
               </Pressable>
-              <Pressable onPress={()=>{ navigation.navigate('RequestNewPassword',{params:{email: values.username}})}}>
+              <Pressable onPress={()=>{ navigation.navigate('RequestNewPassword',{email: values.username})}}>
                 <Text>Forget Password?</Text>
               </Pressable>
             </View>

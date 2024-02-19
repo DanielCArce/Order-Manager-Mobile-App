@@ -1,16 +1,20 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native'
+import { View, Text, Pressable, StyleSheet, SafeAreaView, Platform, StatusBar } from 'react-native'
 import React from 'react'
 import useAuth from '../../hooks/useAuth'
-
+import AppHeader from '../../components/AppHeader'
 const SettingsTab = () => {
     const {logout} = useAuth()
   return (
-    <View>
-          <Text>SettingsTab</Text>
-          <Pressable onPress={logout} style={s.buttonLogout}>
-              <Text>Salirse de la app</Text>
-          </Pressable>
-    </View>
+    <SafeAreaView>
+      <View style={Platform.OS != 'ios'? {paddingTop:0}: null }>
+        <AppHeader />
+        <Text>Clients and Providers</Text>
+        <Pressable onPress={logout} style={s.buttonLogout}>
+          <Text>Sign out</Text>
+        </Pressable>
+      </View>
+      <StatusBar/>
+    </SafeAreaView>
   )
 }
 

@@ -5,6 +5,7 @@ import SiginScreen from '../views/screens/SigninScreen'
 import RequestNewPasswordScreen from '../views/screens/RequestNewPassword'
 import ResetPasswordScreen from '../views/screens/ResetPassword'
 import useAuth from './../hooks/useAuth';
+import OrderDetails from '../views/screens/OrderDetails'
 // import { useLayoutEffect, useState } from 'react';
 
 const Stack = createNativeStackNavigator()
@@ -17,9 +18,10 @@ function MainNavigation({ children }) {
         }}>
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Login" component={LogInScreen} />
-            <Stack.Screen name="Sigin" component={SiginScreen}/>
-            <Stack.Screen name="RequestNewPassword" component={RequestNewPasswordScreen} options={{ headerBackButtonMenuEnabled: true, headerShown: true, headerTitle: ' Forget Password', headerTintColor: '#abc213' }} />
-            <Stack.Screen name="ResetPassword" component={ResetPasswordScreen}/>
+            <Stack.Screen name="Sigin" component={SiginScreen} />
+            <Stack.Screen name="RequestNewPassword" component={RequestNewPasswordScreen} options={{ headerBackButtonMenuEnabled: true, headerTitle: ' Forget Password', headerTintColor: '#abc213' }} />
+            <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
+            <Stack.Screen name='OrderDetails' component={OrderDetails} options={{presentation:'card'}}/>
         </Stack.Navigator>
     )
 }
