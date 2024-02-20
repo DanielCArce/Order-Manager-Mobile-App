@@ -41,18 +41,20 @@ const OrderDetails = () => {
     <View style={{ paddingHorizontal: 10, paddingVertical: 10 }}>
       <View style={{flexDirection:'row', marginBottom:14, gap:10, alignItems:'center'}}>
         <View>
-          <View>
-            <Text>Client: {currentOrder.client}</Text>
+          <View style={{gap:10, flexDirection:'row'}}>
+            <Text>Client:</Text>
+            <Text style={{fontWeight:'800'}}>{currentOrder.client}</Text>
           </View>
-          <View>
-            <Text>Date: {Intl.DateTimeFormat('es-cr', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' }).format(currentOrder.date)}</Text>
+          <View style={{gap:10, flexDirection:'row'}}>
+            <Text>Date:</Text>
+            <Text style={{fontWeight:'800'}}>{Intl.DateTimeFormat('es-cr', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' }).format(currentOrder.date)}</Text>
           </View>
         </View>
         <View style={{backgroundColor:'#000080', paddingVertical:12, paddingHorizontal:10}}>
           <Text style={{color:'#ffffff',fontWeight:'600', textTransform:'capitalize'}}>Order No. {currentOrder.orderID }</Text>
         </View>
       </View>
-      <View style={ {flexDirection:'row', alignContent:'space-between', gap:10}}>
+      <View style={ {flexDirection:'row', alignContent:'space-between', gap:10, borderColor:'#000000', borderBottomWidth:1}}>
         <View style={{flexGrow:3}}>
           <Text style={{textAlign:'center'}}>Description</Text>
         </View>
