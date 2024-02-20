@@ -13,10 +13,10 @@ const OrderCard = ({ orderInfo }) => {
       </View>
       <View>
         <Pressable style={{backgroundColor:'#11ee32', paddingHorizontal:4, paddingVertical:8, borderRadius:6, marginBottom:5} } onPress={(event)=>{ navigation.navigate('OrderDetails',{orderID: orderInfo.orderID})}}>
-          <Text>Details</Text>
+          <Text style={{textAlign:'center'}}>Details</Text>
         </Pressable>
         <Pressable style={[{paddingHorizontal:4, paddingVertical:8, borderRadius:6},orderInfo.status == 'COMPLETED' ? {backgroundColor:'#008040'}: {backgroundColor:'#ff8040'}] }>
-          <Text>{ orderInfo.status}</Text>
+          <Text style={{textAlign:'center'}}>{ orderInfo.status}</Text>
         </Pressable>
       </View>
     </View>
