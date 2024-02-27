@@ -1,10 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer} from '@react-navigation/native'
 import MainNavigation from './navegations/MainNavigation'
 import AuthProvider from './contexts/AuthContext'
 import OrderProvider from './contexts/OrderContext';
-export default function App() {
+import * as Sentry from '@sentry/react-native';
+
+Sentry.init({
+  dsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
+  debug: true, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
+});
+
+function App() {
   return (
     <AuthProvider>
       <OrderProvider>
@@ -15,12 +20,4 @@ export default function App() {
     </AuthProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default Sentry.wrap(App)
