@@ -17,7 +17,21 @@ const initialState = {
                 {id:3, quantity: 3, description: 'Paquete Blanco Plano', size:36, und: 'Paquete'},
                 {id:4, quantity: 3, description: 'Paquete Blanco Plano', size:36, und: 'Paquete'},
                 { id: 5, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' },
-                { id: 6, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' }
+                { id: 6, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' },
+                { id: 7, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' },
+                { id: 8, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' },
+                { id: 9, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' },
+                { id: 10, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' },
+                { id: 11, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' },
+                { id: 12, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' }
+                // { id: 13, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' },
+                // { id: 14, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' },
+                // { id: 15, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' },
+                // { id: 16, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' },
+                // { id: 17, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' },
+                // { id: 18, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' },
+                // { id: 19, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' },
+                // { id: 20, quantity: 3, description: 'Paquete Blanco Plano', size: 36, und: 'Paquete' }
             ]
         },
         {
@@ -186,7 +200,51 @@ const initialState = {
             ]
         }
     ],
-    order:null
+    order: null,
+    shipping:null,
+    shippings: [
+        {
+            id: 1,
+            orderID: 1,
+            items: [
+                { id: 1, quantity: 1, description: 'Paquete Negro Redondo', size: 65, und: 'Paquete' },
+                {id:2, quantity: 1, description: 'Paquete Blanco Plano', size:36, und: 'Paquete'}
+            ]
+        },
+        {
+            id: 2,
+            orderID: 1,
+            items: [
+                { id: 1, quantity: 1, description: 'Paquete Negro Redondo', size: 65, und: 'Paquete' },
+                {id:2, quantity: 1, description: 'Paquete Blanco Plano', size:36, und: 'Paquete'}
+            ]
+        },
+        {
+            id: 3,
+            orderID: 5,
+            items: [
+                { id: 1, quantity: 1, description: 'Paquete Negro Redondo', size: 65, und: 'Paquete' },
+                {id:2, quantity: 1, description: 'Paquete Blanco Plano', size:36, und: 'Paquete'}
+            ]
+        },
+        {
+            id: 4,
+            orderID: 3,
+            items: [
+                { id: 1, quantity: 1, description: 'Paquete Negro Redondo', size: 65, und: 'Paquete' },
+                {id:2, quantity: 1, description: 'Paquete Blanco Plano', size:36, und: 'Paquete'}
+            ]
+        },
+        {
+            id: 5,
+            orderID: 3,
+            items: [
+                { id: 1, quantity: 1, description: 'Paquete Negro Redondo', size: 65, und: 'Paquete' },
+                {id:2, quantity: 1, description: 'Paquete Blanco Plano', size:36, und: 'Paquete'}
+            ]
+        }
+
+    ]
 }
 function OrderProvider({ children }) {
     const [state, dispatch] = useReducer(OrderReducer,initialState)

@@ -1,28 +1,42 @@
 export const ACTIONS = {
-    'ADD_ORDER': 'ADD_ORDER',
-    'ADD_ORDERS':'ADD_ORDERS',
+    'SET_ORDER': 'SET_ORDER',
+    'SET_ORDERS': 'SET_ORDERS',
     'REMOVE_ORDER': 'REMOVE_ORDER',
-    'GET_ORDERS':'GET_ORDERS'
+    'SET_SHIPPING': 'SET_SHIPPING',
+    'SET_SHIPPINGS':'SET_SHIPPINGS'
 }
 
 export default function OrderReducer(state, action) {
+    console.log({action, state})
     switch (action.type) {
-        case ACTIONS.ADD_ORDER:
+        case ACTIONS.SET_ORDER:
             return {
-                orders:[...state.orders, action.payload]
+                ...state,
+                order: state.orders.filter((order)=> order.orderID == action.payload)
             }
-        case ACTIONS.ADD_ORDERS:
+        case ACTIONS.SET_ORDERS:
             return {
-                orders:action.payload
+                ...state,
+                orders: [...state.orders, action.payload]
             }
-        case ACTIONS.GET_ORDERS:
-            return { ...state }
-        
         case ACTIONS.REMOVE_ORDER:
             return {
-                orders: state.orders.filter((order) => order.id != action.payload)
+                ...state,
+                orders: state.orders.filter((order)=> order.orderID != action.payload)
+            }
+        case ACTIONS.SET_SHIPPING:
+            return {
+                ...state,
+                shipping: state.shippings.filter((shipping) => shipping.orderID == action.payload)
+            }
+        case ACTIONS.SET_SHIPPINGS:
+            return {
+                ...state,
+                shippings:[...state.shippings, action.payload]
             }
         default:
-            return {...state}
+            return {
+                ...state
+            }
     }
 }

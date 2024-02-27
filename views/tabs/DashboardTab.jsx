@@ -5,15 +5,11 @@ import OrderCard from '../../components/OrderCard';
 import useOrder from '../../hooks/useOrder';
 const DashboardTab = () => {
   const [orders, setOrders] = useState([])
-  const {state} = useOrder()
+  const {getOrders} = useOrder()
   useLayoutEffect(function () {
-    setOrders(state.orders)
-  },[state])
-  const filterToCompletedOrders = () => {
-    setOrders((prev) => {
-     return {...state.orders.filter((vl)=> vl.status !== 'PENDING')}
-    })
-  }
+    // console.log({o: getOrders()})
+    setOrders(getOrders())
+  },[])
   return (
     <SafeAreaView>
       <View style={Platform.OS != 'ios' ? { paddingTop: 0 } : null}>

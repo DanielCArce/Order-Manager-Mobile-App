@@ -18,7 +18,8 @@ export default function useAuth() {
 
     }
     const isAuthenticated = ()=>{
-        return dispatch({type:ACTIONS.VerifyToken})
+        console.log(dispatch({type:ACTIONS.VerifyToken}))
+        return state.isAuth
     }
     return {state, login, logout, isAuthenticated}
 }

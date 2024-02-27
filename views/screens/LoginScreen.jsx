@@ -1,5 +1,5 @@
 import { View, Text, Pressable, TextInput, Platform, SafeAreaView,StyleSheet, ImageBackgroundComponent } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import useAuth from '../../hooks/useAuth'
 import { Formik } from 'formik';
 import LoginScheme from './../../schemas/Login';
@@ -13,7 +13,7 @@ const LoginScreen = () => {
       initialValues={{ username: '', password: '' }}
       validationSchema={LoginScheme}
       onSubmit={(values) => {
-        console.log({values})
+        // console.log({values})
         login(`${values.username}_${values.password}`)
     }}>
       {({ isValid,errors, handleChange, handleBlur, handleSubmit, values }) => {

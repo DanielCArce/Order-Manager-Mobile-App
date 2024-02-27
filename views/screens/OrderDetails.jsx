@@ -1,16 +1,15 @@
-import { View, Text, Pressable } from 'react-native'
+import { View, Text, Pressable, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { useRoute, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import useOrder from '../../hooks/useOrder';
-import TableDetails from '../../components/TableDetails'
 const OrderDetails = () => {
   const [currentOrder, setCurrentOrder] = useState([])
   const navigation = useNavigation()
-  const router = useRoute()
-  const {state} = useOrder()
+  const {getOrder, addCurrentShipping} = useOrder()
   useEffect(function () {
-    const co = state.orders.filter((val) => val.orderID == router.params.orderID)
-    setCurrentOrder(co[0])
+    let ob = Object.fromEntries( getOrder())
+      // console.log({cOrder: ob })
+    setCurrentOrder(getOrder()[0])
   }, [])
   const estimateTotal = () => {
     const totalWithoutTax = currentOrder.items.reduce((vp, cv) => {
@@ -39,6 +38,10 @@ const OrderDetails = () => {
   }
   return (
     <View style={{ paddingHorizontal: 10, paddingVertical: 10 }}>
+      <View>
+        <Pressable onPress={() => { navigation.goBack() }}>
+        <Text> ⏪ Back To Dashboard</Text></Pressable>
+      </View>
       <View style={{flexDirection:'row', marginBottom:14, gap:10, alignItems:'center'}}>
         <View>
           <View style={{gap:10, flexDirection:'row'}}>
@@ -54,7 +57,7 @@ const OrderDetails = () => {
           <Text style={{color:'#ffffff',fontWeight:'600', textTransform:'capitalize'}}>Order No. {currentOrder.orderID }</Text>
         </View>
       </View>
-      <View style={ {flexDirection:'row', alignContent:'space-between', gap:10, borderColor:'#000000', borderBottomWidth:1}}>
+      <View style={ {flexDirection:'row', alignContent:'space-between',paddingVertical:10, gap:10, borderColor:'#000000', borderBottomWidth:1}}>
         <View style={{flexGrow:3}}>
           <Text style={{textAlign:'center'}}>Description</Text>
         </View>
@@ -68,11 +71,12 @@ const OrderDetails = () => {
           <Text style={{textAlign:'center'}}>Subtotal</Text>
         </View>
       </View>
+      <ScrollView>
       <View>
         {
           currentOrder.items?.length > 0 && currentOrder.items.map((item) => {
             return (
-              <View key={item.id} style={{flexDirection:'row', alignContent:'space-between', gap:10, borderColor:'#000000', borderWidth:1, marginVertical:4, paddingHorizontal:4}}>
+              <View key={item.id} style={[{flexDirection:'row', alignContent:'space-between', gap:10, marginVertical:4, paddingHorizontal:4, paddingVertical:5},item.id % 2 && {backgroundColor:'#c0c0c0'}]}>
                 <View style={{flexGrow:3}}>
                   <Text>{item.description} { item.size}"</Text>
                 </View>
@@ -90,11 +94,21 @@ const OrderDetails = () => {
           })
         }
       </View>
-      <View style={{alignItems:'flex-end'}}>{ currentOrder.items?.length > 0 && estimateTotal() }</View>
-      <View>
-        <Pressable onPress={() => { navigation.goBack() }}>
-        <Text> ⏪ Back To Dashboard</Text></Pressable>
+      </ScrollView>
+      <View style={{ alignItems: 'flex-end' }}>
+          {currentOrder.items?.length > 0 && estimateTotal()}
       </View>
+      <View style={{flexDirection:'row', gap: 10, justifyContent:'space-between', marginVertical:14}}>
+      <Pressable onPress={(event)=> {throw new Error('Function isnt impreemnted')}}>
+        <Text>Add Shipping</Text>
+      </Pressable>
+        <Pressable onPress={() => {
+          addCurrentShipping(currentOrder.orderID)
+          navigation.navigate('ReviewShippingOrders')
+        }}>
+        <Text>View Shipping</Text>
+        </Pressable>
+        </View>
     </View>
   )
 }
