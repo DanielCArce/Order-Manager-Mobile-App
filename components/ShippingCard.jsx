@@ -4,7 +4,7 @@ import React from 'react'
 const ShippingCard = ({ shippingInfo }) => {
     console.log({shippingInfo})
   return (
-    <View style={{marginTop:15}}>
+    <View style={{marginTop:15}} key={shippingInfo.id}>
           <Text>Shipping order: {shippingInfo.orderID} Shipping ID: { shippingInfo.id }</Text>
             <View style={ {flexDirection:'row', alignContent:'space-between',paddingVertical:10, gap:10, borderColor:'#000000', borderBottomWidth:1}}>
                 <View style={{flexGrow:3}}>
