@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "order-manager-app",
+    "name": "Fina App",
     "slug": "order-manager-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -45,7 +45,6 @@
       }
     },
     "owner": "danielcarce",
-    "scheme": "finaapp",
     "runtimeVersion": {
       "policy": "appVersion"
     },
