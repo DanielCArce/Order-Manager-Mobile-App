@@ -1,16 +1,17 @@
-export function get_credenctials(user, pass) {
-    const options = {
-  method: 'POST',
-  headers: {'Content-Type': 'application/json'},
-  body: JSON.stringify({"username":user,"password":pass})
-    }
-    return fetch('http://192.168.100.7:3000/api/v1/auth/token', options)
-        .then((rawData) => {
-            return rawData.json()
-        })
-        .then(({ token }) => { return token })
-        .catch((e)=>{ console.log(e)})
-}
-export function create_new_user(userInfo) {
-  
+export async function getToken(user) {
+  try {
+    const payload = JSON.stringify(user)
+    console.log({payload, user, endpoint:process.env.EXPO_PUBLIC_GATEWAY_API})
+    const request = await fetch('http://192.168.100.7:3000/auth/authorization', {
+      method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    },
+      body: payload
+    })
+    const {token} = await request.json()
+    return token
+  } catch (e) {
+    throw new Error(e.message)
+  }
 }

@@ -14,7 +14,7 @@ const LoginScreen = () => {
       validationSchema={LoginScheme}
       onSubmit={(values) => {
         // console.log({values})
-        login(`${values.username}_${values.password}`)
+        login({username:values.username, password:values.password})
     }}>
       {({ isValid,errors, handleChange, handleBlur, handleSubmit, values }) => {
         return (<>
@@ -32,7 +32,7 @@ const LoginScreen = () => {
               <TextInput style={s.formInput} onBlur={handleBlur('password')} onChangeText={handleChange('password')} value={values.password }  placeholder='pepito$2013' autoCapitalize='none' autoComplete='off' autoCorrect={false} secureTextEntry/>
             </View>
             <View style={s.formSection}>
-              <Pressable onPress={handleSubmit} disabled={!isValid} style={isValid ? {...s.formButtonContainer,backgroundColor: '#0080c0'}: {...s.formButtonContainer,backgroundColor:'#c0c0c0'}}>
+              <Pressable testID='LoginButton' onPress={handleSubmit} disabled={!isValid} style={isValid ? {...s.formButtonContainer,backgroundColor: '#0080c0'}: {...s.formButtonContainer,backgroundColor:'#c0c0c0'}}>
                 <Text style={s.formButtonText}>Starting...</Text>
               </Pressable>
               <Pressable onPress={()=>{ navigation.navigate('RequestNewPassword',{email: values.username})}}>
