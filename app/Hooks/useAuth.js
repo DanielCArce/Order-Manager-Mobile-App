@@ -9,7 +9,7 @@ function useAuth() {
     const navigation = useNavigation()
     const SignIn = (credentials) => {
         getToken(credentials).then((token) => {
-            console.log({token})
+            
             if (token != undefined || token != null) {
                 dispatch({ type: AuthActions.ADD_TOKEN, payload: token })
                 saveToken('token', token)
@@ -24,7 +24,14 @@ function useAuth() {
         return navigation.navigate('LoginScreen')
 
     }
-    const setToken = (token) => dispatch({type:AuthActions.ADD_TOKEN, payload:token})
+    const setToken = (token) => {
+        
+        if (token == undefined) {
+            return navigation.navigate('LoginScreen')
+        }
+        dispatch({ type: AuthActions.ADD_TOKEN, payload: token })
+        return navigation.navigate('HomeScreen')
+    }
     return {
         AuthState: state,
         SignIn,
