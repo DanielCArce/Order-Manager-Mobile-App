@@ -10,8 +10,8 @@
       "distribution":"internal",
       "channel":"preview",
       "env":{
-        "SENTRY_AUTH_TOKEN":"203743921d7a1233d7be847bc77a5743fced031049856aa1eb8576ebf3e012b3",
-        "EXPO_PUBLIC_SENTRY_DSN":"https://5cc4b99873eafc7bd36dae462261cedb@o163098.ingest.sentry.io/4506488224677888"
+        "SENTRY_AUTH_TOKEN": process.env.SENTRY_AUTH_TOKEN,
+        "EXPO_PUBLIC_SENTRY_DSN":process.env.EXPO_PUBLIC_SENTRY_DSN
       }    
     },
     "devolpment":{
@@ -25,8 +25,8 @@
       "production":{
         "channel":"production",
         "env":{
-          "SENTRY_AUTH_TOKEN":"203743921d7a1233d7be847bc77a5743fced031049856aa1eb8576ebf3e012b3",
-          "EXPO_PUBLIC_SENTRY_DSN":"https://5cc4b99873eafc7bd36dae462261cedb@o163098.ingest.sentry.io/4506488224677888"
+          "SENTRY_AUTH_TOKEN": process.env.SENTRY_AUTH_TOKEN,
+        "EXPO_PUBLIC_SENTRY_DSN":process.env.EXPO_PUBLIC_SENTRY_DSN
         },
         "android":{
           "buildType":"apk"
