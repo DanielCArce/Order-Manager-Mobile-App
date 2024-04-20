@@ -4,8 +4,6 @@ const MainNavStack = createNativeStackNavigator()
 import HomeScreen from './../Screens/HomeScreen'
 import LoginScreen from './../Screens/LoginScreen'
 import OrderDetailScreen from '../Screens/OrderDetailScreen'
-
-
 function MainNav({ children }) {
     const {AuthState} = useAuth()
     return (
