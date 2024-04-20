@@ -1,12 +1,15 @@
 import { View, Text, TextInput, Pressable, StyleSheet, Platform, SafeAreaView  } from 'react-native'
-import React from 'react'
+import React, {useLayoutEffect} from 'react'
 import AppHeader from '../Components/AppHeader'
 import {Formik } from 'formik'
 import useAuth from '../Hooks/useAuth'
 import LoginSchema from './../Schemas/LoginScheme';
-
+import {obtainToken} from '../Utils/Storage'
 const LoginScreen = () => {
-  const {SignIn} = useAuth()
+  const { SignIn, setToken } = useAuth()
+  useLayoutEffect(function () {
+    obtainToken().then((token)=> setToken(token))
+  },[])
   return (
     <SafeAreaView>
         <View style={[styles.container, Platform.OS == "web" || Platform.OS== "android" ? {marginTop:50}: null]}>
@@ -16,7 +19,6 @@ const LoginScreen = () => {
             <Text style={[styles.texts, styles.headers]}>Iniciar Sessión</Text>
           </View>
           <Formik initialValues={{ username: '', password: '' }} onSubmit={ (values) => {
-            console.log({ values })
             SignIn({username:values.username, password: values.password})
           }} validationSchema={LoginSchema}>
 

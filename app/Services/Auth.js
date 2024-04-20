@@ -1,7 +1,6 @@
 export async function getToken(credentials) {
     const parsedCredentials = JSON.stringify(credentials)
     const abortController = new AbortController()
-    console.log({parsedCredentials, credentials})
     try {
 
         const request = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/auth/authorization`, {
