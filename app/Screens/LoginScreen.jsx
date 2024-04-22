@@ -1,15 +1,14 @@
 import { View, Text, TextInput, Pressable, StyleSheet, Platform, SafeAreaView  } from 'react-native'
-import React, {useLayoutEffect} from 'react'
+import React, { useLayoutEffect } from 'react'
 import AppHeader from '../Components/AppHeader'
 import {Formik } from 'formik'
 import useAuth from '../Hooks/useAuth'
 import LoginSchema from './../Schemas/LoginScheme';
-import {obtainToken} from '../Utils/Storage'
 const LoginScreen = () => {
-  const { SignIn, setToken } = useAuth()
+  const { SignIn, isTokenAvailable } = useAuth()
   useLayoutEffect(function () {
-    obtainToken().then((token)=> setToken(token))
-  },[])
+    isTokenAvailable()
+  })
   return (
     <SafeAreaView>
         <View style={[styles.container, Platform.OS == "web" || Platform.OS== "android" ? {marginTop:50}: null]}>

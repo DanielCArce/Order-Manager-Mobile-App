@@ -7,7 +7,10 @@ import AppHeader from '../Components/AppHeader'
 const DashboardTab = () => {
   const { ContentState, getOrders } = useContent()
   useEffect(function () {
+    if (!ContentState.orders.length >= 0) {
     getOrders()
+    }
+    console.log({order: ContentState.orders.length})
   },[])
   return (
       <SafeAreaView>
