@@ -1,7 +1,7 @@
 export async function getAllOrders(token) {
     const abortController = new AbortController()
     try {
-        const request = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/orders/`, {
+        const request = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/orders?clients=true`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
