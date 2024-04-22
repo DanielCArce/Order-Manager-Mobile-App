@@ -37,3 +37,4 @@ yarn-error.*
 *.mock.*
 eas.json
 data.md
+.idea/
