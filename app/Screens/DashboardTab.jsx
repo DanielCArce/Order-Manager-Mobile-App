@@ -7,15 +7,12 @@ import AppHeader from '../Components/AppHeader'
 const DashboardTab = () => {
   const { ContentState, getOrders } = useContent()
   useEffect(function () {
-    if (!ContentState.orders.length >= 0) {
     getOrders()
-    }
-    console.log({order: ContentState.orders.length})
   },[])
   return (
       <SafeAreaView>
         <View style={[Platform.OS == "web" || Platform.OS == "android" ? { marginTop: 50, marginHorizontal:30 } : null]}>
-          <FlatList data={ContentState.orders} renderItem={({ item }) => <OrderCard orderInfo={item}/>} keyExtractor={(item) => item.orderID} ListHeaderComponent={<AppHeader />} ListEmptyComponent={<ActivityIndicator/> } refreshing={true} />
+          <FlatList data={ContentState.orders} renderItem={({ item }) => <OrderCard orderInfo={item}/>} keyExtractor={(item) => item.orderID} ListHeaderComponent={<AppHeader />} ListEmptyComponent={<ActivityIndicator/> }  />
       </View>
     </SafeAreaView>
   )

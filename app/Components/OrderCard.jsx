@@ -9,7 +9,7 @@ const OrderCard = ({ orderInfo }) => {
   const navigator = useNavigation()
   const handleDetails = (e) => {
     setCurrentOrder(orderInfo.orderID)
-    navigator.navigate('OrderDetailScreen')
+    return navigator.navigate('OrderDetailScreen')
   }
   return (
     <View style={styles.container}>
