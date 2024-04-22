@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Platform, Switch, FlatList, ScrollView, Pressable } from 'react-native'
+import { View, Text, SafeAreaView, Platform, Switch, FlatList, ScrollView, Pressable, StatusBar } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import useContent from '../Hooks/useContent'
 import Modal from '../Components/Modal'
@@ -16,7 +16,7 @@ const ClientsTab = () => {
   },[])
   return (
       <SafeAreaView>
-      <View style={[Platform.OS == "web" || Platform.OS == "android" ? { marginTop: 50, marginHorizontal: 30 } : null]}>
+      <View style={{marginHorizontal: 30 }}>
         <View style={{marginBottom:15}}>
         <AppHeader />
         </View>
@@ -47,6 +47,7 @@ const ClientsTab = () => {
         </Pressable>
         <Modal isShow={isEnabled} info={clientDetails} click={ handleModal } />
       </View>
+      <StatusBar/>
     </SafeAreaView>
   )
 }
