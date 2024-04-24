@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import useAuth from './useAuth';
 import { ContentContext } from '../Contexts/Content';
-import { getAllOrders } from '../Services/Orders';
+import { getAllOrders, createOrder } from '../Services/Orders';
 import {getAllClients } from '../Services/Clients'
 import { ContentActions } from '../Reducers/Content';
 
@@ -15,12 +15,20 @@ function useContent() {
     const getClients = () => {
         getAllClients(AuthState.token).then((companies)=> dispatch({type: ContentActions.ADD_CLIENTS, payload: companies}))
     }
-    const setCurrentOrder = (orderID) => dispatch({type: ContentActions.ADD_CURRENT_ORDER, payload: orderID})
+    const setCurrentOrder = (orderID) => dispatch({ type: ContentActions.ADD_CURRENT_ORDER, payload: orderID })
+    const addNewOrder = (orderInfo) => {
+        createOrder(AuthState.token, orderInfo).then((newOrder) => {
+            dispatch({ type: ContentActions.ADD_NEW_ORDER, payload: newOrder })
+            
+        })
+
+    }
     return {
         ContentState: state,
         getOrders,
         setCurrentOrder,
-        getClients
+        getClients,
+        addNewOrder
     }
 }
 export default useContent
