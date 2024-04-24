@@ -47,7 +47,7 @@ const OrderCard = ({ orderInfo }) => {
           </View>
         </View>
         <View>
-          <Pressable style={{backgroundColor:'#F59B48', paddingVertical:5, paddingHorizontal:5}} onPress={handleDetails} >
+          <Pressable style={{backgroundColor:'#F59B48', paddingVertical:5, paddingHorizontal:5, bordeWidth: 1, borderRadius:8}} onPress={handleDetails} >
             <Text>Ver Detalles</Text>
           </Pressable>
         </View>
