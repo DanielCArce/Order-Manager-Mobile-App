@@ -8,7 +8,7 @@ const LoginScreen = () => {
   const { SignIn, isTokenAvailable } = useAuth()
   useLayoutEffect(function () {
     isTokenAvailable()
-  })
+  },[])
   return (
     <SafeAreaView>
         <View style={[styles.container, Platform.OS == "web" || Platform.OS== "android" ? {marginTop:50}: null]}>
