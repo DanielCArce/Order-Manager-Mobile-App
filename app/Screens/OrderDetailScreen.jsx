@@ -1,16 +1,20 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, Pressable } from 'react-native'
 import React from 'react'
 import useContent from '../Hooks/useContent'
 import { formatDate } from './../Utils/dateFormat';
+import {readLoud} from '../Utils/text2Voice'
 
 const OrderDetailScreen = () => {
-    const { ContentState } = useContent()
+    const {ContentState} = useContent()
     const calculateUnitPrice = (item, pricePerInch) =>{
-        if (item.unid == "paquete") {
+        if (item.unid == "Paquete") {
         return item.size * pricePerInch / 2
         }
-        if (item.unid == "docena") {
+        if (item.unid == "Docena") {
             return item.size * pricePerInch / 144 * 12
+        }
+        if (item.unid == "Par") {
+            return item.size * pricePerInch / 144
         }
         return item.size * pricePerInch
     }
@@ -76,9 +80,10 @@ const OrderDetailScreen = () => {
                         <Text>{Intl.NumberFormat('es-cr',{style:'currency', currency:'CRC'}).format(subtotal* 1)} </Text>
                     </View>
                 </View>
-            </>
+        </>
             )
     }
+    const handleVoice = (text) => readLoud(text)
   return (
     <View style={{paddingHorizontal:8, paddingTop:25}}>
           {/* <Text>OrderDetailScreen {JSON.stringify(ContentState.order)}</Text> */}
@@ -115,12 +120,12 @@ const OrderDetailScreen = () => {
                   <Text>Subtotal</Text>
               </View>
           </View>
-          <ScrollView>
+          <ScrollView contentContainerStyle={{paddingHorizontal:5}}>
               {ContentState.order.items.map((item) => {
                   return (<View key={item.id} style={{flexDirection:'row', justifyContent:'space-between'}}>
-              <View>
-                  <Text>{`Cordón ${item.unid} ${item.description} ${item.type} ${item.size}\"`}</Text>
-              </View>
+              <Pressable onPress={handleVoice(`${item.unid.slice(0,3)} ${item.description} ${item.type.slice(0,3)} ${item.size}\"`)}>
+                  <Text>{`${item.unid.slice(0,3)} ${item.description} ${item.type.slice(0,3)} ${item.size}\"`}</Text>
+              </Pressable>
               <View>
                   <Text>{item.quantity}</Text>
               </View>
