@@ -5,7 +5,7 @@ import AuthProvider from './app/Contexts/Auth';
 import ContentProvider from './app/Contexts/Content';
 Sentry.init({
   dsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
-  debug:true, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
+  debug:process.env.EXPO_PUBLIC_IS_DEBUG, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
 });
 
 function App() {
