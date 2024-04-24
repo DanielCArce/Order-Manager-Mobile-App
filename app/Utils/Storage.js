@@ -1,13 +1,13 @@
-import * as SecureStore from 'expo-secure-store'
+import {deleteItemAsync, getItemAsync, setItemAsync} from 'expo-secure-store'
 import { Alert } from 'react-native'
 export async function saveTokenInStorage(token) {
-    await SecureStore.setItemAsync('AuthToken', token)
+    await setItemAsync('AuthToken', token)
 }
 export async function removeTokenFromStorage() {
-    await SecureStore.deleteItemAsync('AuthToken')
+    await deleteItemAsync('AuthToken')
 }
 export async function recoveryTokenFromStorage() {
-    const storage = await SecureStore.getItemAsync('AuthToken')
+    const storage = await getItemAsync('AuthToken')
     if (storage) {
         return storage
     }
