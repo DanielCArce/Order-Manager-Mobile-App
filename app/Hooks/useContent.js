@@ -4,8 +4,10 @@ import { ContentContext } from '../Contexts/Content';
 import { getAllOrders, createOrder } from '../Services/Orders';
 import {getAllClients } from '../Services/Clients'
 import { ContentActions } from '../Reducers/Content';
+import { useNavigation } from '@react-navigation/native';
 
 function useContent() {
+    const navigation = useNavigation()
     const { AuthState } = useAuth()
     const {state, dispatch} = useContext(ContentContext)
     const getOrders = () => {
@@ -19,7 +21,8 @@ function useContent() {
     const addNewOrder = (orderInfo) => {
         createOrder(AuthState.token, orderInfo).then((newOrder) => {
             dispatch({ type: ContentActions.ADD_NEW_ORDER, payload: newOrder })
-            
+        }).then((or) => {
+            navigation.navigate('DashboardTab')
         })
 
     }
