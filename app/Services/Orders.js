@@ -33,9 +33,16 @@ export async function getOrderByID(token, orderID) {
 }
 export async function createOrder(token, orderInfo) {
     const abortController = new AbortController()
-    const parsedBody = JSON.stringify(orderInfo)
+    const parsedBody = JSON.stringify({
+        order: {
+            pricePerInch: Number(orderInfo.pricePerInch),
+            items: orderInfo.items
+        },
+        clientID: orderInfo.clientID
+})
+    // console.log({orderInfo, parsedBody})
     try {
-        const request = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/orders/new-order`, {
+        const request = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/orders/new-order/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,6 +55,7 @@ export async function createOrder(token, orderInfo) {
         const { newOrder } = response       
         return newOrder
     } catch (error) {
+        console.log({error})
         throw new Error(error.message)
     }
 }
