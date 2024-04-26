@@ -4,8 +4,10 @@ import AppHeader from '../Components/AppHeader'
 import {Formik } from 'formik'
 import useAuth from '../Hooks/useAuth'
 import LoginSchema from './../Schemas/LoginScheme';
+import { useNavigation } from '@react-navigation/native'
 const LoginScreen = () => {
   const { SignIn, isTokenAvailable } = useAuth()
+  const navigation = useNavigation()
   useLayoutEffect(function () {
     isTokenAvailable()
   },[])
@@ -45,7 +47,7 @@ const LoginScreen = () => {
                       <Text style={[styles.texts, { fontSize: 20 }]}>Ingresar</Text>
                     </View>
                   </Pressable>
-                  <Pressable>
+                  <Pressable onPress={(e) => navigation.navigate('RequestNewPasswordScreen') }>
                     <View style={{ paddingHorizontal: 15, paddingVertical: 8, flex: 1 }}>
                       <Text style={[styles.texts, { fontSize: 18 }]}>Olvide Contraseña?</Text>
                     </View>
