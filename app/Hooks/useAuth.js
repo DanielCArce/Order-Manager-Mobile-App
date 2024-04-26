@@ -1,7 +1,7 @@
 import {useContext} from 'react'
 import { AuthContext } from '../Contexts/Auth'
 import { AuthActions } from '../Reducers/Auth'
-import {getToken} from '../Services/Auth'
+import {getToken, resendPassword} from '../Services/Auth'
 import { useNavigation } from '@react-navigation/native'
 import {recoveryTokenFromStorage, removeTokenFromStorage, saveTokenInStorage} from '../Utils/Storage'
 function useAuth() {
@@ -33,11 +33,15 @@ function useAuth() {
             return navigation.navigate('HomeScreen')
         })
     }
+    const forgetPassword = (username) => {
+        resendPassword(username)
+    }
     return {
         AuthState: state,
         SignIn,
         SignOut,
-        isTokenAvailable
+        isTokenAvailable,
+        forgetPassword
     }
 }
 export default useAuth
