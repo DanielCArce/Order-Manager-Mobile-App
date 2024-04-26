@@ -186,7 +186,7 @@ const NewOrderScreen = () => {
                                 <Pressable
                                   onPress={handleInsiderSubmit}
                                   style={{
-                                    paddingVertical: 10,
+                                    paddingVertical: 5,
                                     paddingHorizontal: 5,
                                     borderRadius: 8,
                                     marginBottom: 5,
@@ -199,16 +199,16 @@ const NewOrderScreen = () => {
                                   </Text>
                                 </Pressable>
                                 <Pressable
-                                  onPress={handleSubmit}
-                                  style={{
-                                    paddingVertical: 10,
-                                    paddingHorizontal: 5,
-                                    borderRadius: 8,
-                                    marginBottom: 15,
-                                    backgroundColor: "#80ff00",
-                                    width: "50%",
-                                  }}
-                                >
+                                            onPress={handleSubmit}
+                                            style={{
+                                                paddingVertical: 10,
+                                                paddingHorizontal: 5,
+                                                borderRadius: 8,
+                                                marginBottom: 15,
+                                                backgroundColor: valuesGlobal.items.length <= 0 ? "#9d9d9d" : "#80ff00",
+                                                width: "50%",
+                                            }}
+                                            disabled={valuesGlobal.items.length <= 0 ? true : false }>
                                   <Text style={{ textAlign: "center" }}>
                                     Confirmar Pedido
                                   </Text>
