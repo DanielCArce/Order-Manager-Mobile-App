@@ -34,7 +34,9 @@ function useAuth() {
         })
     }
     const forgetPassword = (username) => {
-        resendPassword(username)
+        resendPassword(username).then((s) => {
+            return navigation.navigate('LoginScreen')
+        })
     }
     return {
         AuthState: state,
