@@ -13,11 +13,21 @@ export async function getToken(credentials) {
             },
             body: parsedCredentials
         })
-        const response = await request.json()
-        const { token } = response
-        return token
+        if (request.status == 200) {
+            const response = await request.json()
+            console.log({ response })
+            const { token } = response
+            return token
+            
+        }
+        if (request.status == 401) {
+            Alert.alert('Error Al Ingresar Al Sistema','Usuario o Contraseña INCORRECTA')
+        }
+        console.log({request})
     } catch (error) {
+        console.log({error})
         throw new Error(error.message)
+
     }
 }
 export async function resendPassword(username) {
@@ -32,8 +42,9 @@ export async function resendPassword(username) {
             },
             body: parsedCredentials   
         })
-        if (response.status == 200) {
-            Alert.alert('Recuperación de Contrase','Si el correo ingresado corresponde a ')
+        console.log({request})
+        if (request.status == 200) {
+            return Alert.alert('Recuperación de Contrase','Si el correo ingresado corresponde a ')
         }
     } catch (error) {
         throw new Error(error.message)
