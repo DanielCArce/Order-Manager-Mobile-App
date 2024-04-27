@@ -14,7 +14,8 @@ const DashboardTab = () => {
   return (
       <SafeAreaView>
         <View style={[Platform.OS == "web" || Platform.OS == "android" ? { marginTop: 50, marginHorizontal:30 } : null]}>
-        <FlatList data={ContentState.orders} renderItem={({ item }) => <OrderCard orderInfo={item} />} keyExtractor={(item) => item.orderID} ListHeaderComponent={<AppHeader />} ListEmptyComponent={<ActivityIndicator />} refreshing={true} />
+          <AppHeader />
+        <FlatList data={ContentState.orders} renderItem={({ item }) => <OrderCard orderInfo={item} />} keyExtractor={(item) => item.orderID}  ListEmptyComponent={<ActivityIndicator />} refreshing={true} />
       </View>
     </SafeAreaView>
   )

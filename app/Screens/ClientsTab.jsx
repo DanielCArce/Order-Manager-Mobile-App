@@ -4,13 +4,11 @@ import useContent from '../Hooks/useContent'
 import Modal from '../Components/Modal'
 import AppHeader from './../Components/AppHeader';
 import {MaterialCommunityIcons} from '@expo/vector-icons'
-import useAuth from './../Hooks/useAuth';
 const ClientsTab = () => {
   const [isEnabled, setIsEnabled] = useState(false)
   const [clientDetails, setClientDetails] = useState({})
   const { ContentState, getClients } = useContent()
   const handleModal = (e) => setIsEnabled(prev => !prev)
-  const {SignOut} = useAuth()
     useEffect(function () {
     getClients()
   },[])
@@ -42,9 +40,6 @@ const ClientsTab = () => {
             )
           })}
         </ScrollView>
-        <Pressable onPress={SignOut}>
-          <Text>Salirse</Text>
-        </Pressable>
         <Modal isShow={isEnabled} info={clientDetails} click={ handleModal } />
       </View>
       <StatusBar/>
