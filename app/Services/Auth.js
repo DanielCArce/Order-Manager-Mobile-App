@@ -42,9 +42,27 @@ export async function resendPassword(username) {
             },
             body: parsedCredentials   
         })
-        console.log({request})
         if (request.status == 200) {
             return Alert.alert('Recuperación de Contrase','Si el correo ingresado corresponde a ')
+        }
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
+export async function renewPassword(token, newPassword) {
+    const abortController = new AbortController()
+    try {
+        const request = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/users/update-password`, {
+            signal: abortController.signal,
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization':`Bearer ${token}`
+            },
+            body: JSON.stringify({newPassword})
+        })
+        if (request.status == 200) {
+            return Alert.alert('Contraseña Cambiada','Se cambio con exito la contraseña.')
         }
     } catch (error) {
         throw new Error(error.message)
