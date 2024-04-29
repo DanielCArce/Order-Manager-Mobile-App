@@ -15,7 +15,7 @@ export async function getToken(credentials) {
         })
         if (request.status == 200) {
             const response = await request.json()
-            console.log({ response })
+            
             const { token } = response
             return token
             
@@ -23,9 +23,9 @@ export async function getToken(credentials) {
         if (request.status == 401) {
             Alert.alert('Error Al Ingresar Al Sistema','Usuario o Contraseña INCORRECTA')
         }
-        console.log({request})
+        
     } catch (error) {
-        console.log({error})
+        
         throw new Error(error.message)
 
     }

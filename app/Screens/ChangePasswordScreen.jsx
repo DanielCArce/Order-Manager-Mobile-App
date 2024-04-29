@@ -13,7 +13,6 @@ const ChangePasswordScreen = () => {
           }}
               validationSchema={ChangePasswordScheme}
               onSubmit={(values) => {
-                  console.log({values})
                   if (values.newPassword == values.confirmNewPassword) {
                       changePassword(values.newPassword)
                   }

@@ -40,7 +40,6 @@ export async function createOrder(token, orderInfo) {
         },
         clientID: orderInfo.clientID
 })
-    // console.log({orderInfo, parsedBody})
     try {
         const request = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/orders/new-order/`, {
             method: 'POST',
@@ -55,7 +54,7 @@ export async function createOrder(token, orderInfo) {
         const { newOrder } = response       
         return newOrder
     } catch (error) {
-        console.log({error})
+        
         throw new Error(error.message)
     }
 }
