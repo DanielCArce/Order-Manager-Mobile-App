@@ -26,12 +26,14 @@ function useContent() {
         })
 
     }
+    const setFilter = (status) => dispatch({type:ContentActions.SET_FILTER, payload: status})
     return {
         ContentState: state,
         getOrders,
         setCurrentOrder,
         getClients,
-        addNewOrder
+        addNewOrder,
+        setFilter
     }
 }
 export default useContent

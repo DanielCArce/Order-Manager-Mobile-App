@@ -8,7 +8,9 @@ export const ContentActions = {
     'ADD_NEW_CLIENT': 'ADD_NEW_CLIENT',
     // Actions de Entregas
     'ADD_SHIPPINGS': 'ADD_SHIPPINGS',
-    'ADD_NEW_SHIPPING':'ADD_NEW_SHIPPING'
+    'ADD_NEW_SHIPPING': 'ADD_NEW_SHIPPING',
+    //Filtros de Ordenes
+    'SET_FILTER':'SET_FILTER'
 }
 
 function reducer(state, action) {
@@ -46,6 +48,11 @@ function reducer(state, action) {
             return {
                 ...state,
                 shippings:[...state.shippings, payload]
+            }
+        case ContentActions.SET_FILTER:
+            return {
+                ...state,
+                filterBy: payload
             }
         default:
             return state
