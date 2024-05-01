@@ -11,6 +11,14 @@ const OrderCard = ({ orderInfo }) => {
     setCurrentOrder(orderInfo.orderID)
     return navigator.navigate('OrderDetailScreen')
   }
+  const handleStatus = (status) => {
+    if (status == "ON_PROCESS") {
+      return "Esperando"
+    }
+    if (status == "COMPLETED") {
+      return "Listo"
+    }
+  }
   return (
     <View style={styles.container}>
       <View style={styles.rowsInfo}>
@@ -43,7 +51,7 @@ const OrderCard = ({ orderInfo }) => {
             <Text style={styles.rowKey}>Estado</Text>
           </View>
           <View>
-            <Text>{orderInfo.status}</Text>
+            <Text>{handleStatus(orderInfo.status)}</Text>
           </View>
         </View>
         <View>
