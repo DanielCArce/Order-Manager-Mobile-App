@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, TextInput, Pressable } from 'react-native'
+import { View, Text, SafeAreaView, TextInput, Pressable, StyleSheet, Alert } from 'react-native'
 import React from 'react'
 import ChangePasswordScheme from './../Schemas/ChangePasswordSheme';
 import { Formik } from 'formik';
@@ -16,24 +16,31 @@ const ChangePasswordScreen = () => {
                   if (values.newPassword == values.confirmNewPassword) {
                       changePassword(values.newPassword)
                   }
+                  if(values.newPassword != values.confirmNewPassword){
+                Alert.alert('Contraseñas no coinciden','La contraseña y la confirmación no coinciden')}
               }}
           >
               {
-                  ({values, handleBlur, handleChange, handleSubmit }) => {
+                  ({values, handleBlur, handleChange, handleSubmit, isValid }) => {
                       return (
                           <>
-                              <Text>{ JSON.stringify(values)}</Text>
-                              <View>
+                              {/* <Text>{ JSON.stringify(values)}</Text> */}
+                              <View style={styles.container}>
+                                  <View style={styles.formControl}>
+                                      <Text style={[styles.formControl,{fontSize:24, textAlign:'center', fontWeight:'600'}]}>Cambio de Contraseña</Text>
+                                  </View>
+                              <View style={styles.formControl}>
                                   <Text>Nueva Contraseña:</Text>
-                                  <TextInput onBlur={handleBlur('newPassword')} onChangeText={handleChange('newPassword')} value={ values.newPassword} />
+                                      <TextInput style={ styles.input} onBlur={handleBlur('newPassword')} onChangeText={handleChange('newPassword')} value={ values.newPassword} />
                               </View>
-                              <View>
+                              <View style={styles.formControl}>
                                   <Text>Confirmar Nueva Contraseña:</Text>
-                                  <TextInput onBlur={handleBlur('confirmNewPassword')} onChangeText={handleChange('confirmNewPassword')} value={ values.confirmNewPassword} />
+                                  <TextInput style={styles.input} onBlur={handleBlur('confirmNewPassword')} onChangeText={handleChange('confirmNewPassword')} value={ values.confirmNewPassword} />
                               </View>
-                              <Pressable onPress={handleSubmit} style={{paddingVertical:5, paddingHorizontal:10}}>
-                                  <Text>Cambiar Contraseña</Text>
-                              </Pressable>
+                              <Pressable onPress={handleSubmit} style={[{paddingVertical:10, paddingHorizontal:5},styles.formControl,{backgroundColor: isValid ? "#00ff40" : "#dddddd"}]}>
+                                  <Text style={{textAlign:'center'}}>Cambiar Contraseña</Text>
+                                  </Pressable>
+                            </View>
                           </>)
                   }
               }
@@ -41,5 +48,21 @@ const ChangePasswordScreen = () => {
     </SafeAreaView>
   )
 }
-
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'column',
+        // flex: 1
+        marginHorizontal: 30,
+        justifyContent:'center'
+    },
+    formControl: {
+        marginVertical:15
+    },
+    input: {
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor:'#000000',
+        marginTop:10
+    }
+})
 export default ChangePasswordScreen

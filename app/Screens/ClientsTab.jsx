@@ -16,31 +16,38 @@ const ClientsTab = () => {
       <SafeAreaView>
       <View style={{marginHorizontal: 30 }}>
         <View style={{marginBottom:15}}>
-        <AppHeader />
+          <AppHeader />
+          <Text style={{fontSize:28, textAlign:'center', marginVertical:15, fontWeight:'700'}}>Clientes</Text>
         </View>
         <View style={{flexDirection:'row', justifyContent:'space-between'}}>
           <View>
             <Text>Nombre</Text>
           </View>
+          <View>
+            <Text>Acciones</Text>
+          </View>
         </View>
         <ScrollView>
           {ContentState.clients.map((client) => {
             return (
-              <View key={client.id} style={{flexDirection:'row', justifyContent:'space-between', marginBottom:10}}>
-                <View>
-                  <Text>{client.name }</Text>
+                <View style={{flexDirection:'row', justifyContent:'space-between'}} key={client.id}>
+                  <View>
+                    <Text>{ client.name}</Text>
+                  </View>
+                  <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+                    <MaterialCommunityIcons name="circle-edit-outline" size={24}/>
+                    <MaterialCommunityIcons name="delete-outline" size={24}/>
+                    <MaterialCommunityIcons name="eye" size={24} onPress={() => {
+                      setClientDetails(client)
+                      handleModal()
+                    }}/>
+                  </View>
                 </View>
-                <Pressable onPress={() => {
-                  setClientDetails(client)
-                  handleModal()
-                }}>
-                  <MaterialCommunityIcons name='eye-plus' size={24} />
-                </Pressable>
-              </View>
             )
-          })}
+          })
+        }
         </ScrollView>
-        <Modal isShow={isEnabled} info={clientDetails} click={ handleModal } />
+        <Modal isShow={isEnabled} info={clientDetails} click={( handleModal) } />
       </View>
       <StatusBar/>
     </SafeAreaView>

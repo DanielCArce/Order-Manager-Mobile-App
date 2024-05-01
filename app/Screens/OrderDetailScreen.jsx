@@ -123,9 +123,7 @@ const OrderDetailScreen = () => {
           <ScrollView contentContainerStyle={{paddingHorizontal:5}}>
               {ContentState.order.items.map((item) => {
                   return (<View key={item.id} style={{flexDirection:'row', justifyContent:'space-between'}}>
-              <Pressable onPress={handleVoice(`${item.unid.slice(0,3)} ${item.description} ${item.type.slice(0,3)} ${item.size}\"`)}>
                   <Text>{`${item.unid.slice(0,3)} ${item.description} ${item.type.slice(0,3)} ${item.size}\"`}</Text>
-              </Pressable>
               <View>
                   <Text>{item.quantity}</Text>
               </View>

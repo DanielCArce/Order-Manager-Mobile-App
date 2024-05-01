@@ -42,7 +42,7 @@ const NewOrderScreen = () => {
                       Información de Cliente
                     </Text>
                   </View>
-                  <View style={{ marginBottom: 5 }}>
+                  <View style={{ marginBottom: 5, gap: 10 }}>
                     <View>
                       <Text>Cliente:</Text>
                     </View>
@@ -186,12 +186,12 @@ const NewOrderScreen = () => {
                                 <Pressable
                                   onPress={handleInsiderSubmit}
                                   style={{
-                                    paddingVertical: 5,
+                                    paddingVertical: 10,
                                     paddingHorizontal: 5,
                                     borderRadius: 8,
-                                    marginBottom: 5,
+                                    marginBottom: 15,
                                     backgroundColor: "#ffff80",
-                                    width: "45%",
+                                    width: "50%",
                                   }}
                                 >
                                   <Text style={{ textAlign: "center" }}>
@@ -199,16 +199,24 @@ const NewOrderScreen = () => {
                                   </Text>
                                 </Pressable>
                                 <Pressable
-                                            onPress={handleSubmit}
-                                            style={{
-                                                paddingVertical: 10,
-                                                paddingHorizontal: 5,
-                                                borderRadius: 8,
-                                                marginBottom: 15,
-                                                backgroundColor: valuesGlobal.items.length <= 0 ? "#9d9d9d" : "#80ff00",
-                                                width: "50%",
-                                            }}
-                                            disabled={valuesGlobal.items.length <= 0 ? true : false }>
+                                  onPress={handleSubmit}
+                                  style={{
+                                    paddingVertical: 10,
+                                    paddingHorizontal: 5,
+                                    borderRadius: 8,
+                                    marginBottom: 15,
+                                    backgroundColor:
+                                      valuesGlobal.items.length <= 0
+                                        ? "#9d9d9d"
+                                        : "#80ff00",
+                                    width: "50%",
+                                  }}
+                                  disabled={
+                                    valuesGlobal.items.length <= 0
+                                      ? true
+                                      : false
+                                  }
+                                >
                                   <Text style={{ textAlign: "center" }}>
                                     Confirmar Pedido
                                   </Text>
