@@ -9,15 +9,13 @@ Sentry.init({
 });
 
 function App() {
-  return (<>
-    <AuthProvider>
+  return (<AuthProvider>
       <ContentProvider>
         <NavigationContainer>
             <MainNav/> 
         </NavigationContainer>
       </ContentProvider>
-    </AuthProvider>
-  </>);
+    </AuthProvider>);
 }
 
 export default Sentry.wrap(App)
