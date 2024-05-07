@@ -5,10 +5,13 @@ import OrderCard from '../Components/OrderCard'
 import AppHeader from '../Components/AppHeader'
 
 const DashboardTab = () => {
-  const { ContentState, getOrders } = useContent()
+  const { ContentState, getOrders, getShippings } = useContent()
   useEffect(function () {
     getOrders()
   }, [])
+  useEffect(function () {
+    getShippings()
+  },[])
   return (
       <SafeAreaView>
       <View style={[Platform.OS == "web" || Platform.OS == "android" ? { marginTop: 50, marginHorizontal: 30 } : null]}>

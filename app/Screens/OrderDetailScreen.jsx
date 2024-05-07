@@ -3,9 +3,11 @@ import React from 'react'
 import useContent from '../Hooks/useContent'
 import { formatDate } from './../Utils/dateFormat';
 import {readLoud} from '../Utils/text2Voice'
+import { useNavigation } from '@react-navigation/native';
 
 const OrderDetailScreen = () => {
-    const {ContentState} = useContent()
+    const { ContentState } = useContent()
+    const navigation = useNavigation()
     const calculateUnitPrice = (item, pricePerInch) =>{
         if (item.unid == "Paquete") {
         return item.size * pricePerInch / 2
@@ -83,10 +85,9 @@ const OrderDetailScreen = () => {
         </>
             )
     }
-    const handleVoice = (text) => readLoud(text)
   return (
     <View style={{paddingHorizontal:8, paddingTop:25}}>
-          {/* <Text>OrderDetailScreen {JSON.stringify(ContentState.order)}</Text> */}
+          {/* <Text>OrderDetailScreen {JSON.stringify(ContentState)}</Text> */}
           <View style={{alignContent:'space-between', gap:10}}>
               <View>
                   <Text>Orden No. {ContentState.order.orderID }</Text>
@@ -139,6 +140,20 @@ const OrderDetailScreen = () => {
           <View style={{alignSelf:'flex-end', marginTop:5}}>
               {calculateTotal()}
           </View>
+          <Pressable onPress={(e) => {
+              navigation.navigate('AddShippingScreen', {
+                  oInfo: ContentState.order
+              })
+          }}>
+              <Text>Agregar Entrega</Text>
+          </Pressable>
+          <Pressable onPress={(e) => {
+              navigation.navigate('ReviewShippingScreen', {
+                  oInfo: ContentState.order.orderID
+              })
+          }}>
+              <Text>Revisar Entregas</Text>
+          </Pressable>
     </View>
   )
 }

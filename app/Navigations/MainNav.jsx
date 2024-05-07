@@ -7,6 +7,8 @@ import OrderDetailScreen from '../Screens/OrderDetailScreen'
 import NewOrderScreen from '../Screens/NewOrderScreen'
 import RequestNewPassword from '../Screens/RequestNewPasswordScreen'
 import ChangePasswordScreen from './../Screens/ChangePasswordScreen';
+import NewShippingScreen from '../Screens/NewShippingScreen'
+import ReviewShippingScreen from '../Screens/ReviewShippingScreen'
 function MainNav({ children }) {
     const {AuthState} = useAuth()
     return (
@@ -17,6 +19,8 @@ function MainNav({ children }) {
             <MainNavStack.Screen name='NewOrderScreen' component={NewOrderScreen} options={{ headerTitle: 'Nueva Orden' }}/>
             <MainNavStack.Screen name="RequestNewPasswordScreen" component={RequestNewPassword} options={{headerShown:false}}/>
             <MainNavStack.Screen name="ChangePasswordScreen" component={ChangePasswordScreen} options={{headerTitle:' Cambiar Contraseña'}} />
+            <MainNavStack.Screen name="AddShippingScreen" component={NewShippingScreen} options={{headerTitle:'Nueva Entrega'}}/>
+            <MainNavStack.Screen name="ReviewShippingScreen" component={ReviewShippingScreen} options={{headerTitle:'Entregas'}}/>
         </MainNavStack.Navigator>
     )
 }

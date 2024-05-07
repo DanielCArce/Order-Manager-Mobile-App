@@ -5,6 +5,7 @@ import { getAllOrders, createOrder } from '../Services/Orders';
 import {getAllClients } from '../Services/Clients'
 import { ContentActions } from '../Reducers/Content';
 import { useNavigation } from '@react-navigation/native';
+import { createNewShipping, getAllShippings } from '../Services/Shippings';
 
 function useContent() {
     const navigation = useNavigation()
@@ -22,18 +23,32 @@ function useContent() {
         createOrder(AuthState.token, orderInfo).then((newOrder) => {
             dispatch({ type: ContentActions.ADD_NEW_ORDER, payload: newOrder })
         }).then((or) => {
-            navigation.navigate('DashboardTab')
+            return navigation.navigate('DashboardTab')
         })
 
     }
-    const setFilter = (status) => dispatch({type:ContentActions.SET_FILTER, payload: status})
+    const addShippingToOrder = (orderDetails) => {
+        createNewShipping(AuthState.token, orderDetails).then((newShippings) => {
+            dispatch({type: ContentActions.ADD_NEW_SHIPPING,payload: newShippings})
+        }).then(() => {
+            return navigation.navigate('DashboardTab')
+        })
+    }
+    const setFilter = (status) => dispatch({ type: ContentActions.SET_FILTER, payload: status })
+    const getShippings = () => {
+        getAllShippings(AuthState.token).then((shippings) => {
+            dispatch({type:ContentActions.ADD_SHIPPINGS,payload: shippings})
+        })
+    }
     return {
         ContentState: state,
         getOrders,
         setCurrentOrder,
         getClients,
         addNewOrder,
-        setFilter
+        setFilter,
+        addShippingToOrder,
+        getShippings
     }
 }
 export default useContent
