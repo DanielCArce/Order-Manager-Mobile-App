@@ -140,20 +140,23 @@ const OrderDetailScreen = () => {
           <View style={{alignSelf:'flex-end', marginTop:5}}>
               {calculateTotal()}
           </View>
-          <Pressable onPress={(e) => {
+          <View style={{flexDirection:'row', gap:15}}>
+
+          <Pressable style={{backgroundColor: '#008040', paddingHorizontal: 5, paddingVertical:5}} onPress={(e) => {
               navigation.navigate('AddShippingScreen', {
                   oInfo: ContentState.order
-              })
-          }}>
+                })
+            }}>
               <Text>Agregar Entrega</Text>
           </Pressable>
-          <Pressable onPress={(e) => {
+              <Pressable style={{backgroundColor:'#ffff80', paddingHorizontal: 5, paddingVertical:5}} onPress={(e) => {
               navigation.navigate('ReviewShippingScreen', {
                   oInfo: ContentState.order.orderID
-              })
-          }}>
+                })
+            }}>
               <Text>Revisar Entregas</Text>
           </Pressable>
+              </View>
     </View>
   )
 }
