@@ -30,7 +30,7 @@ const LoginScreen = () => {
                     <Text style={[styles.texts, styles.labels]}>Usuario: {errors.username ? <Text style={{color:'red'}}>{errors.username}</Text> : null }</Text>
                   </View>
                   <View>
-                    <TextInput style={styles.inputs} onBlur={handleBlur('username')} onChangeText={handleChange('username')} value={values.username} placeholder='Por favor escribir el correo' autoCapitalize='none' autoComplete='off' autoCorrect={ false} />
+                    <TextInput style={styles.inputs} onBlur={handleBlur('username')} onChangeText={handleChange('username')} value={values.username} placeholder='Por favor escribir el correo' autoCapitalize='none' autoComplete='off' autoCorrect={ false} testID='email'/>
                   </View>
                 </View>
                 <View style={styles.formControls}>
@@ -38,11 +38,11 @@ const LoginScreen = () => {
                     <Text style={[styles.texts, styles.labels]}>Contraseña: {errors.password ? <Text style={{color:'red'}}>{errors.password}</Text> : null }</Text>
                   </View>
                   <View>
-                    <TextInput style={styles.inputs} onBlur={handleBlur('password')} onChangeText={handleChange('password')} value={values.password} placeholder='Por favor escribir la contraseña' secureTextEntry autoCapitalize='none' autoComplete='off' autoCorrect={ false}/>
+                    <TextInput style={styles.inputs} onBlur={handleBlur('password')} onChangeText={handleChange('password')} value={values.password} placeholder='Por favor escribir la contraseña' secureTextEntry autoCapitalize='none' autoComplete='off' autoCorrect={ false} testID='password'/>
                   </View>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                  <Pressable onPress={handleSubmit} disabled={isValid ? false : true}>
+                  <Pressable onPress={handleSubmit} disabled={isValid ? false : true} testID='btnSignIn'>
                     <View style={[{ paddingHorizontal: 15, paddingVertical: 8, flexGrow: 2 }, isValid ? {backgroundColor: '#51D877'} : {backgroundColor:'#dddddd'}]}>
                       <Text style={[styles.texts, { fontSize: 20 }]}>Ingresar</Text>
                     </View>
