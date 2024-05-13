@@ -1,13 +1,22 @@
 import { View, Text, ScrollView, Pressable } from 'react-native'
-import React from 'react'
+import React, { useRef } from 'react'
 import useContent from '../Hooks/useContent'
 import { formatDate } from './../Utils/dateFormat';
-import {readLoud} from '../Utils/text2Voice'
+import { shareAsync, isAvailableAsync } from 'expo-sharing'
+import {captureRef} from 'react-native-view-shot'
 import { useNavigation } from '@react-navigation/native';
 
 const OrderDetailScreen = () => {
     const { ContentState } = useContent()
     const navigation = useNavigation()
+    const OIRef = useRef()
+    const handleShareButton = () => {
+        captureRef(OIRef).then((uri) => {
+            shareAsync(uri)
+        }).catch((error) => {
+            console.log({er:error})
+        })
+    }
     const calculateUnitPrice = (item, pricePerInch) =>{
         if (item.unid == "Paquete") {
         return item.size * pricePerInch / 2
@@ -107,6 +116,7 @@ const OrderDetailScreen = () => {
                   </View>
               </View>
           </View>
+          <View ref={OIRef}>
           <View style={{flexDirection:'row', justifyContent:'space-between', borderBottomWidth:2}}>
               <View>
                   <Text>Descripción</Text>
@@ -136,10 +146,12 @@ const OrderDetailScreen = () => {
               </View>
           </View> )
               })}
-          </ScrollView>
+              </ScrollView>
+              
           <View style={{alignSelf:'flex-end', marginTop:5}}>
               {calculateTotal()}
-          </View>
+              </View>
+        </View>
           <View style={{flexDirection:'row', gap:15}}>
 
           <Pressable style={{backgroundColor: '#008040', paddingHorizontal: 5, paddingVertical:5}} onPress={(e) => {
@@ -155,6 +167,9 @@ const OrderDetailScreen = () => {
                 })
             }}>
               <Text>Revisar Entregas</Text>
+              </Pressable>
+              <Pressable style={{ backgroundColor: '#ffff80', paddingHorizontal: 5, paddingVertical: 5 }} onPress={handleShareButton}>
+              <Text>Compartir</Text>
           </Pressable>
               </View>
     </View>
