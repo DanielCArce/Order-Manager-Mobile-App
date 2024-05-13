@@ -19,8 +19,8 @@ function MainNav({ children }) {
             <MainNavStack.Screen name='NewOrderScreen' component={NewOrderScreen} options={{ headerTitle: 'Nueva Orden' }}/>
             <MainNavStack.Screen name="RequestNewPasswordScreen" component={RequestNewPassword} options={{headerShown:false}}/>
             <MainNavStack.Screen name="ChangePasswordScreen" component={ChangePasswordScreen} options={{headerTitle:' Cambiar Contraseña'}} />
+            <MainNavStack.Screen name="ReviewShippingScreen" component={ReviewShippingScreen} options={{ headerTitle: 'Entregas' }} />
             <MainNavStack.Screen name="AddShippingScreen" component={NewShippingScreen} options={{headerTitle:'Nueva Entrega'}}/>
-            <MainNavStack.Screen name="ReviewShippingScreen" component={ReviewShippingScreen} options={{headerTitle:'Entregas'}}/>
         </MainNavStack.Navigator>
     )
 }
