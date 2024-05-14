@@ -13,7 +13,7 @@ const ClientsTab = () => {
     getClients()
   },[])
   return (
-      <SafeAreaView>
+      <SafeAreaView style={{flex:1}}>
       <View style={{marginHorizontal: 30 }}>
         <View style={{marginBottom:15}}>
           <AppHeader />

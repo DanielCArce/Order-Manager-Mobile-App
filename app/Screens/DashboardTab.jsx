@@ -13,7 +13,7 @@ const DashboardTab = () => {
     getShippings()
   },[])
   return (
-      <SafeAreaView>
+      <SafeAreaView style={{flex:1}}>
       <View style={[Platform.OS == "web" || Platform.OS == "android" ? { marginTop: 50, marginHorizontal: 30 } : null]}>
         {/* <Text>{ JSON.stringify(ContentState.orders)}</Text> */}
         <FlatList data={ContentState.orders} renderItem={({ item }) => <OrderCard orderInfo={item} />} keyExtractor={(item) => item.orderID} ListEmptyComponent={<ActivityIndicator/>} refreshing={true} ListHeaderComponent={<>

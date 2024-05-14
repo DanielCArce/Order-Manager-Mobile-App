@@ -7,7 +7,7 @@ const OrdersTab = () => {
   const navigator = useNavigation();
   return (
     <>
-      <SafeAreaView>
+      <SafeAreaView style={{flex:1}}>
         <AppHeader />
         <View style={{gap:10, justifyContent:'space-between', paddingHorizontal:30}}>
           <Pressable onPress={(e) => navigator.navigate("NewOrderScreen")}>

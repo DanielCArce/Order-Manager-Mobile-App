@@ -12,7 +12,7 @@ const LoginScreen = () => {
     isTokenAvailable()
   },[])
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex:1}}>
         <View style={[styles.container, Platform.OS == "web" || Platform.OS== "android" ? {marginTop:50}: null]}>
           <AppHeader moveToScreen='LoginScreen'/>
         <View style={{marginTop:161}}>

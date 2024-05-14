@@ -8,9 +8,9 @@ const SettingsTab = () => {
   const {SignOut} = useAuth()
   const navigation = useNavigation()
   return (
-      <SafeAreaView>
+      <SafeAreaView style={{flex:1}}>
       <AppHeader />
-      <Pressable>
+      <Pressable onPress={()=> navigation.navigate('AddNewUserScreen')}>
         <Text>Agregar Mas Usuarios</Text>
       </Pressable>
       <Pressable onPress={()=> navigation.navigate('ChangePasswordScreen')}>

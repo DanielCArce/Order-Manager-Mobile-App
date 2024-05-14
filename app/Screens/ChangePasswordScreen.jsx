@@ -6,7 +6,7 @@ import useAuth from './../Hooks/useAuth';
 const ChangePasswordScreen = () => {
     const {changePassword} = useAuth()
   return (
-      <SafeAreaView>
+      <SafeAreaView style={{flex:1}}>
           <Formik initialValues={{
               newPassword: '',
               confirmNewPassword:''

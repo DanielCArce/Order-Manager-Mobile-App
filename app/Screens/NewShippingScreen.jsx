@@ -1,20 +1,20 @@
 import { View, Text, Pressable, TextInput } from 'react-native'
 import React from 'react'
 import { useRoute } from '@react-navigation/native'
-import {Formik, FieldArray, Field} from 'formik'
+import {Formik, FieldArray} from 'formik'
 import useContent from '../Hooks/useContent'
+// import { formatDate } from '../Utils/dateFormat'
 
 const NewShippingScreen = () => {
     const {params} = useRoute()
     const {addShippingToOrder} = useContent()
   return (
     <View style={{marginHorizontal:30, gap:20}}>
-          <Text>Entrega Para Orden # {params.oInfo.orderID }</Text>
-          {/* <Text>Info: {JSON.stringify(params)}</Text>
-          {console.log(params.oInfo)} */}
+          <Text>Entrega Para Orden # {params.oInfo.orderID}</Text>
           <Formik initialValues={params.oInfo} onSubmit={
               (values) => {
-                  addShippingToOrder({orderID: values.orderID,shipping:{items:values.items}})
+                  console.log({params, values})
+                  addShippingToOrder({orderID: values.orderID,shipping:{items:values.items, pricePerInch: params.oInfo.pricePerInch}})
               }
           }>
               {
