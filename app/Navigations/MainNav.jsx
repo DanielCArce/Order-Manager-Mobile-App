@@ -9,6 +9,7 @@ import RequestNewPassword from '../Screens/RequestNewPasswordScreen'
 import ChangePasswordScreen from './../Screens/ChangePasswordScreen';
 import NewShippingScreen from '../Screens/NewShippingScreen'
 import ReviewShippingScreen from '../Screens/ReviewShippingScreen'
+import AddNewUserScreen from '../Screens/AddNewUserScreen'
 function MainNav({ children }) {
     const {AuthState} = useAuth()
     return (
@@ -20,7 +21,8 @@ function MainNav({ children }) {
             <MainNavStack.Screen name="RequestNewPasswordScreen" component={RequestNewPassword} options={{headerShown:false}}/>
             <MainNavStack.Screen name="ChangePasswordScreen" component={ChangePasswordScreen} options={{headerTitle:' Cambiar Contraseña'}} />
             <MainNavStack.Screen name="ReviewShippingScreen" component={ReviewShippingScreen} options={{ headerTitle: 'Entregas' }} />
-            <MainNavStack.Screen name="AddShippingScreen" component={NewShippingScreen} options={{headerTitle:'Nueva Entrega'}}/>
+            <MainNavStack.Screen name="AddShippingScreen" component={NewShippingScreen} options={{ headerTitle: 'Nueva Entrega' }} />
+            <MainNavStack.Screen name="AddNewUserScreen" component={AddNewUserScreen} options={{ headerTitle: 'Crear Nuevo Usuario' }} />
         </MainNavStack.Navigator>
     )
 }
