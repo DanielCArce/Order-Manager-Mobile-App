@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Pressable, ScrollView } from "react-native";
+import { View, Text, TextInput, Pressable, ScrollView, Alert } from "react-native";
 import React, { useEffect } from "react";
 import { Picker } from "@react-native-picker/picker";
 import { Formik } from "formik";
@@ -93,6 +93,7 @@ const NewOrderScreen = () => {
                             id: valuesGlobal.items.length + 1,
                           },
                         ]);
+                        Alert.alert('Artiulo Agregrado','El Articulo ha sido agregado exitosamente')
                       }}
                       validationSchema={AddItemScheme}
                     >
