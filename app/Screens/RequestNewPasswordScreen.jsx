@@ -1,37 +1,38 @@
-import { View, Text, TextInput, Pressable } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView, Platform  } from 'react-native'
 import React from 'react'
-import useAuth from '../Hooks/useAuth'
-import RequestNewPasswordScheme from '../Schemas/RequestNewPassowrdScheme'
-import { Formik } from 'formik'
+import AppHeader from '../Components/AppHeader'
+import ResetPasswordForm from '../Components/ResetPasswordForm'
 
 const RequestNewPassword = () => {
-  const {forgetPassword} = useAuth()
-  return (
-    <>
-		  <Formik initialValues={{ username: '' }} validationSchema={RequestNewPasswordScheme} onSubmit={(values) => {
-			  forgetPassword(values.username)
-		  }}>
-			  {({ values, handleBlur, handleChange, handleSubmit }) => {
-				  return (
-					  <>
-						  <View>
-							  
-						  <View>
-							  <Text>Username</Text>
-							  <TextInput onBlur={handleBlur('username')} onChangeText={handleChange('username')} value={values.username} />
-						  </View>
-							  <View>
-								  <Pressable onPress={handleSubmit}>
-									  <Text>Request Password</Text>
-								  </Pressable>
-						  </View>
-					  </View>
-					  </>
-				  )
-			  }}
-	  </Formik>
-    </>
+	return (
+		<SafeAreaView style={s.safeContainer}>
+			<View style={s.container}>
+				<AppHeader />
+				<View style={s.contentContainer}>
+					<Text style={s.textHeader}>Restablecer Contraseña</Text>
+				<ResetPasswordForm/>
+				</View>
+			</View>
+	  </SafeAreaView>
   )
 }
 
+const s = StyleSheet.create({
+	safeContainer: {
+		flex: 1
+	},
+	container: {
+		flex: 1,
+		marginTop: Platform.OS == "android" ? 25 : 0,
+		paddingHorizontal:30
+	},
+	textHeader: {
+	fontSize: 34,
+	textAlign: 'center'
+},contentContainer: {
+    flex:1,
+    alignItems: 'center',
+    justifyContent:'center'
+  }
+})
 export default RequestNewPassword
