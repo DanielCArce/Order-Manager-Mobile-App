@@ -1,8 +1,10 @@
 import { View, Text, Modal as ModalRN, Pressable, Switch, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import useContent from '../Hooks/useContent';
 const Modal = ({ isShow, info, click }) => {
     const [data, setData] = useState({})
+    const {updateClient} = useContent()
     const toggleInfo = (val) => {
         setData((prevVal) => {
             return {
@@ -10,6 +12,7 @@ const Modal = ({ isShow, info, click }) => {
                 isFE: !prevVal.isFE
             }
         })
+        updateClient(data.id, {"isFE": data.isFE})
     }
 useEffect(function () {
         setData(info)
