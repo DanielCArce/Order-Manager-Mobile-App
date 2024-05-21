@@ -7,6 +7,7 @@ node_modules/
 .expo/
 dist/
 web-build/
+.expo-shared/
 
 # Native
 *.orig.*
@@ -38,3 +39,4 @@ yarn-error.*
 eas.json
 data.md
 .idea/
+.github/
