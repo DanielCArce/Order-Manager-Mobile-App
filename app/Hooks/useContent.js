@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import useAuth from './useAuth';
 import { ContentContext } from '../Contexts/Content';
 import { getAllOrders, createOrder } from '../Services/Orders';
-import {getAllClients } from '../Services/Clients'
+import {getAllClients, updateClientInfo } from '../Services/Clients'
 import { ContentActions } from '../Reducers/Content';
 import { useNavigation } from '@react-navigation/native';
 import { createNewShipping, getAllShippings } from '../Services/Shippings';
@@ -40,6 +40,11 @@ function useContent() {
             dispatch({type:ContentActions.ADD_SHIPPINGS,payload: shippings})
         })
     }
+    const updateClient = (clientID, payload) => {
+        updateClientInfo(AuthState.token, clientID, payload).then((uc) => {
+            dispatch({type:ContentActions.UPDATE_CLIENT_INFO, payload: uc})
+        })
+    }
     return {
         ContentState: state,
         getOrders,
@@ -48,7 +53,8 @@ function useContent() {
         addNewOrder,
         setFilter,
         addShippingToOrder,
-        getShippings
+        getShippings,
+        updateClient
     }
 }
 export default useContent
