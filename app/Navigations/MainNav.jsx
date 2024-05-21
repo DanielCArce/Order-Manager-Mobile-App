@@ -10,8 +10,12 @@ import ChangePasswordScreen from './../Screens/ChangePasswordScreen';
 import NewShippingScreen from '../Screens/NewShippingScreen'
 import ReviewShippingScreen from '../Screens/ReviewShippingScreen'
 import AddNewUserScreen from '../Screens/AddNewUserScreen'
+import { useEffect } from 'react'
 function MainNav({ children }) {
-    const {AuthState} = useAuth()
+    const { AuthState, isTokenAvailable } = useAuth()
+    useEffect(function () {
+        isTokenAvailable()
+    },[])
     return (
         <MainNavStack.Navigator initialRouteName={(AuthState.isAuth== true && AuthState.token != null)? 'HomeScreen':'LoginScreen'}>
             <MainNavStack.Screen name='LoginScreen' component={LoginScreen} options={{headerShown:false}}/>
