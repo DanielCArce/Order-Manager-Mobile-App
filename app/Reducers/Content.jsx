@@ -6,7 +6,8 @@ export const ContentActions = {
     // Actions de Clientes
     'ADD_CLIENTS': 'ADD_CLIENTS',
     'ADD_NEW_CLIENT': 'ADD_NEW_CLIENT',
-    'UPDATE_CLIENT_INFO':'UPDATE_CLIENT_INFO',
+    'UPDATE_CLIENT_INFO': 'UPDATE_CLIENT_INFO',
+    'REMOVE_CLIENT':'REMOVE_CLIENT',
     // Actions de Entregas
     'ADD_SHIPPINGS': 'ADD_SHIPPINGS',
     'ADD_NEW_SHIPPING': 'ADD_NEW_SHIPPING',
@@ -41,14 +42,20 @@ function reducer(state, action) {
                 clients:[...state.clients, payload]
             }
         case ContentActions.UPDATE_CLIENT_INFO:
-            let uclient = state.clients.map((v, ind, arr) => {
-                if (v.id == payload.id) {
-                    return payload
-                }
-            })
             return {
                 ...state,
-                clients: [...state.clients, uclient]
+                clients: state.clients.map((client, ind) => {
+                    console.log({client, payload})
+                    if (client.id == payload.id) {
+                        return payload
+                    }
+                    return client
+                })
+            }
+        case ContentActions.REMOVE_CLIENT:
+            return {
+                ...state,
+                clients: state.clients.filter((val, indx) => val.id !== payload)
             }
         case ContentActions.ADD_SHIPPINGS:
             return {

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import useAuth from './useAuth';
 import { ContentContext } from '../Contexts/Content';
 import { getAllOrders, createOrder } from '../Services/Orders';
-import {getAllClients, updateClientInfo } from '../Services/Clients'
+import {deleteClientActive, getAllClients, updateClientInfo } from '../Services/Clients'
 import { ContentActions } from '../Reducers/Content';
 import { useNavigation } from '@react-navigation/native';
 import { createNewShipping, getAllShippings } from '../Services/Shippings';
@@ -45,6 +45,11 @@ function useContent() {
             dispatch({type:ContentActions.UPDATE_CLIENT_INFO, payload: uc})
         })
     }
+    const inactiveClient = (companyID) => {
+        deleteClientActive(AuthState.token, companyID).then((inclient) => {
+            dispatch({type:ContentActions.REMOVE_CLIENT, payload:companyID})
+        })
+    }
     return {
         ContentState: state,
         getOrders,
@@ -54,7 +59,8 @@ function useContent() {
         setFilter,
         addShippingToOrder,
         getShippings,
-        updateClient
+        updateClient,
+        inactiveClient
     }
 }
 export default useContent
