@@ -1,13 +1,13 @@
-import { View, Text, SafeAreaView, Platform, Switch, FlatList, ScrollView, Pressable, StatusBar } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import useContent from '../Hooks/useContent'
-import Modal from '../Components/Modal'
+import { View, Text, SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import useContent from '../Hooks/useContent';
+import Modal from '../Components/Modal';
 import AppHeader from './../Components/AppHeader';
-import {MaterialCommunityIcons} from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 const ClientsTab = () => {
   const [isEnabled, setIsEnabled] = useState(false)
   const [clientDetails, setClientDetails] = useState({})
-  const { ContentState, getClients } = useContent()
+  const { ContentState, getClients, inactiveClient } = useContent()
   const handleModal = (e) => setIsEnabled(prev => !prev)
     useEffect(function () {
     getClients()
@@ -36,7 +36,9 @@ const ClientsTab = () => {
                   </View>
                   <View style={{flexDirection:'row', justifyContent:'space-between'}}>
                     <MaterialCommunityIcons name="circle-edit-outline" size={24}/>
-                    <MaterialCommunityIcons name="delete-outline" size={24}/>
+                  <MaterialCommunityIcons name="delete-outline" size={24} onPress={() => {
+                    inactiveClient(client.id)
+                  }} />
                     <MaterialCommunityIcons name="eye" size={24} onPress={() => {
                       setClientDetails(client)
                       handleModal()
