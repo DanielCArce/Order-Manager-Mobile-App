@@ -11,6 +11,7 @@ import NewShippingScreen from '../Screens/NewShippingScreen'
 import ReviewShippingScreen from '../Screens/ReviewShippingScreen'
 import AddNewUserScreen from '../Screens/AddNewUserScreen'
 import { useEffect } from 'react'
+import AddNewCompanyScreen from '../Screens/AddNewCompanyScreen'
 function MainNav({ children }) {
     const { AuthState, isTokenAvailable } = useAuth()
     useEffect(function () {
@@ -27,6 +28,7 @@ function MainNav({ children }) {
             <MainNavStack.Screen name="ReviewShippingScreen" component={ReviewShippingScreen} options={{ headerTitle: 'Entregas' }} />
             <MainNavStack.Screen name="AddShippingScreen" component={NewShippingScreen} options={{ headerTitle: 'Nueva Entrega' }} />
             <MainNavStack.Screen name="AddNewUserScreen" component={AddNewUserScreen} options={{ headerTitle: 'Crear Nuevo Usuario' }} />
+            <MainNavStack.Screen name="AddNewClientScreen" component={AddNewCompanyScreen} options={{ headerTitle: 'Crear Nuevo Cliente' }}/>
         </MainNavStack.Navigator>
     )
 }
