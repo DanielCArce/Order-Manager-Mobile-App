@@ -20,43 +20,20 @@ const OrderCard = ({ orderInfo }) => {
     }
   }
   return (
-    <View style={styles.container}>
-      <View style={styles.rowsInfo}>
-        <View>
-          <Text style={styles.rowKey}>Order</Text>
-        </View>
-        <View>
-          <Text>{orderInfo.orderID.slice(0,18)}</Text>
-        </View>
+    <View style={[styles.container]}>
+      <View>
+        <Text style={{textAlign:'center', fontWeight:'700'}}>{orderInfo.orderID}</Text>
       </View>
       <View style={styles.rowsInfo}>
-        <View>
-          <Text style={styles.rowKey}>Cliente:</Text>
+        <View style={{gap:15, justifyContent:'space-between'}}>
+          <Text style={styles.rowKey}>{ orderInfo.client.name}</Text>
+          <Text>Fecha: {formatDate(orderInfo.date)}</Text>
+          <Text>{orderInfo.items.length } articulos</Text>
         </View>
-        <View>
-          <Text>{orderInfo.client.name}</Text>
-        </View>
-      </View>
-      <View style={styles.rowsInfo}>
-        <View>
-          <Text style={styles.rowKey}>Fecha:</Text>
-        </View>
-        <View>
-          <Text>{ formatDate(orderInfo.date)}</Text>
-        </View>
-      </View>
-      <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-        <View style={[styles.rowsInfo, {gap:15}]}>
-          <View>
-            <Text style={styles.rowKey}>Estado</Text>
-          </View>
-          <View>
-            <Text>{handleStatus(orderInfo.status)}</Text>
-          </View>
-        </View>
-        <View>
-          <Pressable style={{backgroundColor:'#F59B48', paddingVertical:5, paddingHorizontal:5, bordeWidth: 1, borderRadius:8}} onPress={handleDetails} >
-            <Text>Ver Detalles</Text>
+        <View style={{gap:10}}>
+          <Text style={{textTransform:'uppercase', fontWeight:'700'}}>{handleStatus(orderInfo.status) }</Text>
+          <Pressable onPress={handleDetails} style={styles.button}>
+            <Text style={{color:'#ffffff'}}>Mas Detalles</Text>
           </Pressable>
         </View>
       </View>
@@ -66,10 +43,12 @@ const OrderCard = ({ orderInfo }) => {
 const styles = StyleSheet.create({
   rowsInfo: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   rowKey: {
-    fontWeight:'500'
+    fontWeight:'500',
+    fontSize:22
   },
   container: {
     borderWidth: 1,
@@ -78,7 +57,15 @@ const styles = StyleSheet.create({
     paddingVertical:10,
     borderRadius: 10,
     gap: 10,
-    marginTop:15
+    marginTop: 15
+  },
+  button: {
+    paddingVertical:6,
+    paddingHorizontal: 4,
+    borderWidth: 1,
+    borderColor: '#ffffff',
+    backgroundColor:'#0080c0',
+    borderRadius:6
   }
 })
 export default OrderCard
