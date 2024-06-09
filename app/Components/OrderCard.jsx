@@ -66,6 +66,10 @@ const styles = StyleSheet.create({
     borderColor: '#ffffff',
     backgroundColor:'#0080c0',
     borderRadius:6
+  },
+  shadows:{
+    elevation: 1,
+    shadowColor: '#52006A',
   }
 })
 export default OrderCard
