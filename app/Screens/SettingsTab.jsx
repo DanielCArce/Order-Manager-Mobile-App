@@ -10,9 +10,7 @@ const SettingsTab = () => {
   return (
       <SafeAreaView style={{flex:1}}>
       <AppHeader />
-      <Pressable onPress={()=> navigation.navigate('AddNewUserScreen')}>
-        <Text>Agregar Mas Usuarios</Text>
-      </Pressable>
+      <Text style={{textAlign:'center', fontWeight:'800', fontSize:24, marginVertical:15}}>Configuración</Text>
       <Pressable onPress={()=> navigation.navigate('ChangePasswordScreen')}>
         <Text>Cambiar Contraseña</Text>
       </Pressable>
