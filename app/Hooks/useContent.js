@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import useAuth from './useAuth';
 import { ContentContext } from '../Contexts/Content';
 import { getAllOrders, createOrder } from '../Services/Orders';
-import {deleteClientActive, getAllClients, updateClientInfo } from '../Services/Clients'
+import {createClient, deleteClientActive, getAllClients, updateClientInfo } from '../Services/Clients'
 import { ContentActions } from '../Reducers/Content';
 import { useNavigation } from '@react-navigation/native';
 import { createNewShipping, getAllShippings } from '../Services/Shippings';
@@ -50,6 +50,13 @@ function useContent() {
             dispatch({type:ContentActions.REMOVE_CLIENT, payload:companyID})
         })
     }
+    const addNewClient = (payload) => {
+        createClient(AuthState.token, payload).then((newCompany) => {
+            dispatch({type:ContentActions.ADD_NEW_CLIENT, payload:newCompany})
+        }).then(() => {
+            return navigation.navigate('DashboardTab')
+        })
+    }
     return {
         ContentState: state,
         getOrders,
@@ -60,7 +67,8 @@ function useContent() {
         addShippingToOrder,
         getShippings,
         updateClient,
-        inactiveClient
+        inactiveClient,
+        addNewClient
     }
 }
 export default useContent
