@@ -4,8 +4,7 @@ import CompanyForm from '../Components/CompanyForm'
 
 const AddNewCompanyScreen = () => {
   return (
-    <View>
-      <Text>AddNewCompanyScreen</Text>
+    <View style={{flex:1, marginTop:35}}>
       <CompanyForm/>
     </View>
   )
