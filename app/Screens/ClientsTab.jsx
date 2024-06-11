@@ -35,7 +35,6 @@ const ClientsTab = () => {
                     <Text>{ client.name}</Text>
                   </View>
                   <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-                    <MaterialCommunityIcons name="circle-edit-outline" size={24}/>
                   <MaterialCommunityIcons name="delete-outline" size={24} onPress={() => {
                     inactiveClient(client.id)
                   }} />
