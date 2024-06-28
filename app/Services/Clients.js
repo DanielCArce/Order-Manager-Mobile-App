@@ -40,7 +40,6 @@ export async function updateClientInfo(token, companyID, payload) {
  const abortController = new AbortController()
     try {
         const content = JSON.stringify(payload)
-        console.log({content, token, companyID, payload})
         const request = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/companies/${companyID}`, {
             method: 'PUT',
             headers: {
@@ -58,7 +57,6 @@ export async function updateClientInfo(token, companyID, payload) {
     }   
 }
 export async function deleteClientActive(token, companyID) {
-    console.log({mes:"running clean mode", token, companyID})
     const abortController = new AbortController()
     try {
         const request = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/companies/${companyID}`, {

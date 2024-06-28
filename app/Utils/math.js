@@ -16,7 +16,6 @@ export const calculateTotal = (items, pricePerInch, isFE) => {
         let subtotal = items.reduce((pv, cv) => {
             return total = pv + calculateSubtotalPerLine(cv, pricePerInch)
         }, 0)
-        console.log({ isFE })
         if (isFE) {
             return (<>
                 <Text>Subtotal: {formatNumbers(subtotal)}</Text>

@@ -9,7 +9,7 @@ function FloatingMenu() {
     const navigation = useNavigation()
   const [isOpen, setIsOpen] = useState(false)
     const openMenu = () => {
-        console.log('Moving to Open')
+        
       setIsOpen(true)
       Animated.sequence([
         Animated.timing(animBottomRef, {
@@ -25,7 +25,6 @@ function FloatingMenu() {
       ]).start()
     }
     const closeMenu = () => {
-        console.log('Moving to Close')
       setIsOpen(false)
       Animated.sequence([
         Animated.timing(animBottomRef, {
@@ -64,7 +63,6 @@ function FloatingMenu() {
         </Animated.View>
             <Pressable onPress={(e) => {
                 isOpen ? closeMenu() : openMenu()
-                console.log({animRightRef, animBottomRef})
             }} style={{ paddingVertical: 6, paddingHorizontal: 5, backgroundColor: "#d32", borderRadius:50, position:'absolute', right:5, bottom:50}}>
             <Icon name="plus" size={25} color="#a3a3a3" />
       </Pressable>

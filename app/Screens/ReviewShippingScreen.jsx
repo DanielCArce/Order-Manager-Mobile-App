@@ -13,7 +13,6 @@ const RenewShippingScreen = () => {
       return item.orderID == params.oInfo;
     });
     setShippingByOrder(preShips);
-    console.log({ i: params, shippingByOrder });
   }, []);
   
   return (

@@ -16,7 +16,6 @@ const NewOrderScreen = () => {
         <Formik
           initialValues={{ clientID: 1, items: [], pricePerInch: 300 }}
           onSubmit={(values) => {
-            //   console.log({ values });
             addNewOrder(values);
           }}
         >

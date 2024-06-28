@@ -5,6 +5,7 @@ import { getAllOrders, createOrder } from '../Services/Orders';
 import {createClient, deleteClientActive, getAllClients, updateClientInfo } from '../Services/Clients'
 import { ContentActions } from '../Reducers/Content';
 import { useNavigation } from '@react-navigation/native';
+import {createNewUser} from '../Services/Auth'
 import { createNewShipping, getAllShippings } from '../Services/Shippings';
 
 function useContent() {
@@ -57,6 +58,11 @@ function useContent() {
             return navigation.navigate('DashboardTab')
         })
     }
+    const addNewUser = (payload) => {
+        createNewUser(AuthState.token, payload).then((vl) => { 
+            return navigation.navigate('DashboardTab')
+        })
+    }
     return {
         ContentState: state,
         getOrders,
@@ -68,7 +74,8 @@ function useContent() {
         getShippings,
         updateClient,
         inactiveClient,
-        addNewClient
+        addNewClient,
+        addNewUser
     }
 }
 export default useContent

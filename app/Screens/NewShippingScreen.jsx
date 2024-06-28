@@ -13,7 +13,6 @@ const NewShippingScreen = () => {
           <Text>Entrega Para Orden # {params.oInfo.orderID}</Text>
           <Formik initialValues={params.oInfo} onSubmit={
               (values) => {
-                  console.log({params, values})
                   addShippingToOrder({orderID: values.orderID,shipping:{items:values.items, pricePerInch: params.oInfo.pricePerInch}})
               }
           }>

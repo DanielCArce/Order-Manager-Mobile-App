@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@testing-library/react-native'
-
 import LoginScreen from '../app/Components/SignInForm'
 import AuthProvider from '../app/Contexts/Auth'
 import { NavigationContainer } from '@react-navigation/native'
@@ -11,8 +10,9 @@ const ComponentForTest = () => (
         </NavigationContainer>
     </AuthProvider>
 )
-it('Check if Component Email', function () {
-    render(<ComponentForTest/>)
-    expect(screen.getByTestId('email')).toBeTruthy()
-
-})
+describe('Login Form', function () {
+    it('Login Form have email field', () => {
+        render(<ComponentForTest />)
+        expect(screen.getAllByTestId('email')).toBeTrusly()
+    });
+})cd

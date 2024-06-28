@@ -4,6 +4,6 @@ export function shareButton(ref) {
     captureRef(ref).then((uri) => {
         shareAsync(uri)
     }).catch((e) => {
-        console.log({e})
+        throw new Error(e.message)
     })
 }

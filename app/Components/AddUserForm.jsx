@@ -2,9 +2,11 @@ import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native'
 import React from 'react'
 import {Formik} from 'formik'
 import { Picker } from '@react-native-picker/picker'
+import useContent from '../Hooks/useContent'
 function AddUserForm() {
+  const {addNewUser} = useContent()
     return (
-        <Formik initialValues={{ role: 'USER', name: '', email: '' }} onSubmit={(values) => console.log({ values })}>
+        <Formik initialValues={{ role: 'USER', name: '', email: '' }} onSubmit={(values) => addNewUser({...values})}>
             {({ setFieldValue, values, handleBlur, handleChange, handleSubmit }) => {
                 return (
                     <>

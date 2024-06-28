@@ -45,7 +45,6 @@ function reducer(state, action) {
             return {
                 ...state,
                 clients: state.clients.map((client, ind) => {
-                    console.log({client, payload})
                     if (client.id == payload.id) {
                         return payload
                     }
