@@ -68,3 +68,22 @@ export async function renewPassword(token, newPassword) {
         throw new Error(error.message)
     }
 }
+export async function createNewUser(token, userPayload) {
+    const abortController = new AbortController()
+    try {
+        const request = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/users/new-user`, {
+            signal: abortController.signal,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization':`Bearer ${token}`
+            },
+            body: JSON.stringify({userPayload})
+        })
+        if (request.status == 200) {
+            return Alert.alert('Usuario Creado','Se creo el usuario nuevo.')
+        }
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
