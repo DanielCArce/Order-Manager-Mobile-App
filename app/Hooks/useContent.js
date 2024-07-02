@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import useAuth from './useAuth';
 import { ContentContext } from '../Contexts/Content';
-import { getAllOrders, createOrder } from '../Services/Orders';
+import { getAllOrders, createOrder, updateOrderStatus } from '../Services/Orders';
 import {createClient, deleteClientActive, getAllClients, updateClientInfo } from '../Services/Clients'
 import { ContentActions } from '../Reducers/Content';
 import { useNavigation } from '@react-navigation/native';
@@ -41,9 +41,12 @@ function useContent() {
             dispatch({type:ContentActions.ADD_SHIPPINGS,payload: shippings})
         })
     }
+    const setCurrentClient = (companyInfo) => {
+        dispatch({type: ContentActions.ADD_CURRENT_CLIENT, payload:companyInfo})
+    }
     const updateClient = (clientID, payload) => {
-        updateClientInfo(AuthState.token, clientID, payload).then((uc) => {
-            dispatch({type:ContentActions.UPDATE_CLIENT_INFO, payload: uc})
+        updateClientInfo(AuthState.token, clientID, payload).then((updatedCompany) => {
+            dispatch({type:ContentActions.UPDATE_CLIENT_INFO, payload: updatedCompany})
         })
     }
     const inactiveClient = (companyID) => {
@@ -63,19 +66,29 @@ function useContent() {
             return navigation.navigate('DashboardTab')
         })
     }
+    const updateToCompletedOrder = (payload) => {
+        updateOrderStatus(AuthState.token, payload).then((orderUpdated) => {
+            console.log({orderUpdated})
+            dispatch({
+                type: ContentActions.UPDATE_ORDER_STATUS,
+                payload: orderUpdated
+            })
+        }).finally(()=> navigation.navigate('DashboardTab'))
+    }
     return {
         ContentState: state,
         getOrders,
         setCurrentOrder,
         getClients,
         addNewOrder,
-        setFilter,
+        setFilter,setCurrentClient,
         addShippingToOrder,
         getShippings,
         updateClient,
         inactiveClient,
         addNewClient,
-        addNewUser
+        addNewUser,
+        updateToCompletedOrder
     }
 }
 export default useContent

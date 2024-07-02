@@ -3,11 +3,13 @@ export const ContentActions = {
     'ADD_ORDERS': 'ADD_ORDERS',
     'ADD_CURRENT_ORDER': 'ADD_CURRENT_ORDER',
     'ADD_NEW_ORDER': 'ADD_NEW_ORDER',
+    'UPDATE_ORDER_STATUS':'UPDATE_ORDER_STATUS',
     // Actions de Clientes
     'ADD_CLIENTS': 'ADD_CLIENTS',
     'ADD_NEW_CLIENT': 'ADD_NEW_CLIENT',
     'UPDATE_CLIENT_INFO': 'UPDATE_CLIENT_INFO',
-    'REMOVE_CLIENT':'REMOVE_CLIENT',
+    'REMOVE_CLIENT': 'REMOVE_CLIENT',
+    'ADD_CURRENT_CLIENT': 'ADD_CURRENT_CLIENT',
     // Actions de Entregas
     'ADD_SHIPPINGS': 'ADD_SHIPPINGS',
     'ADD_NEW_SHIPPING': 'ADD_NEW_SHIPPING',
@@ -44,12 +46,29 @@ function reducer(state, action) {
         case ContentActions.UPDATE_CLIENT_INFO:
             return {
                 ...state,
+                orders: state.orders.map((order) => {
+                    console.log({orderReducer:order})
+                    if (order.client.id == payload.id) {
+                        return {
+                            ...order,
+                            client: payload
+                        }
+                    }
+                    return order
+                }),
                 clients: state.clients.map((client, ind) => {
+                    console.log({client, payload})
                     if (client.id == payload.id) {
                         return payload
                     }
                     return client
-                })
+                }),
+                client: state.client == null ? null : payload
+            }
+        case ContentActions.ADD_CURRENT_CLIENT:
+            return {
+                ...state,
+                client: payload
             }
         case ContentActions.REMOVE_CLIENT:
             return {
@@ -67,9 +86,44 @@ function reducer(state, action) {
                 shippings:[...state.shippings, payload]
             }
         case ContentActions.SET_FILTER:
+            console.log({ payload, ord: state.orders })
+            if (payload == 'ALL') {
+                return {
+                ...state,
+                filterBy: payload,
+                ordersByFilters: state.orders
+                }
+            }
+            if (payload == 'ON_PROCESS') {
+                return {
+                    ...state,
+                    filterBy: payload,
+                    ordersByFilters: state.orders.filter((order) => order.status == payload)
+                }
+            }
+            if (payload == 'COMPLETED') {
+                return {
+                    ...state,
+                    filterBy: payload,
+                    ordersByFilters: state.orders.filter((order)=> order.status == payload)
+                }
+            }
+        case ContentActions.UPDATE_ORDER_STATUS:
+            console.log({payload})
             return {
                 ...state,
-                filterBy: payload
+                orders: state.orders.map((corder) => {
+                    if (corder.orderID == payload.orderID) {
+                        return payload
+                    }
+                    return corder
+                }),
+                ordersByFilters: state.ordersByFilters.map((corder) => {
+                    if (corder.orderID == payload.orderID) {
+                        return payload
+                    }
+                    return corder
+                })
             }
         default:
             return state

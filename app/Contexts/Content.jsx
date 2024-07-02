@@ -4,10 +4,11 @@ export const ContentContext = createContext(null)
 const initialState = {
     orders: [],
     order:{},
+    ordersByFilters:[],
     clients: [],
     client: {},
     shippings: [],
-    filterBy: 'ON_PROGRESS'
+    filterBy: 'ON_PROCESS'
 }
 export default function ContentProvider({ children }) {
     const [state,dispatch ] = useReducer(ContentReducer,initialState)
