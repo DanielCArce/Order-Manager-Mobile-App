@@ -49,9 +49,11 @@ export async function updateClientInfo(token, companyID, payload) {
             body: content,
             signal:abortController.signal
         })
-        const response = await request.json()
-        const { companyUpdated } = response
-        return companyUpdated
+        if (request.status == 200) {
+            const response = await request.json()
+            const { companyUpdated } = response
+            return companyUpdated
+        }
     } catch (error) {
         throw new Error(error.message)
     }   
