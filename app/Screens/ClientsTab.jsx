@@ -6,8 +6,7 @@ import AppHeader from './../Components/AppHeader';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 const ClientsTab = () => {
   const [isEnabled, setIsEnabled] = useState(false)
-  const [clientDetails, setClientDetails] = useState({})
-  const { ContentState, getClients, inactiveClient } = useContent()
+  const { ContentState, getClients, inactiveClient, setCurrentClient } = useContent()
   const handleModal = (e) => setIsEnabled(prev => !prev)
     useEffect(function () {
     getClients()
@@ -39,7 +38,7 @@ const ClientsTab = () => {
                     inactiveClient(client.id)
                   }} />
                     <MaterialCommunityIcons name="eye" size={24} onPress={() => {
-                      setClientDetails(client)
+                      setCurrentClient(client)
                       handleModal()
                     }}/>
                   </View>
@@ -48,7 +47,7 @@ const ClientsTab = () => {
           })
         }
         </ScrollView>
-        <Modal isShow={isEnabled} info={clientDetails} click={( handleModal) } />
+        <Modal isShow={isEnabled} click={( handleModal) } />
       </View>
       <StatusBar/>
     </SafeAreaView>
