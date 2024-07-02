@@ -1,4 +1,4 @@
-import { View, Text, FlatList} from "react-native";
+import { View, Text, FlatList, Pressable} from "react-native";
 import React, { useEffect, useState } from "react";
 import { useRoute } from "@react-navigation/native";
 import useContent from "../Hooks/useContent";
@@ -7,7 +7,7 @@ import AppHeader from './../Components/AppHeader';
 const RenewShippingScreen = () => {
   const { params } = useRoute();
   const [shippingByOrder, setShippingByOrder] = useState([]);
-  const { ContentState } = useContent();
+  const { ContentState, updateToCompletedOrder } = useContent();
   useEffect(function () {
     let preShips = ContentState.shippings.filter((item, index) => {
       return item.orderID == params.oInfo;
@@ -17,7 +17,14 @@ const RenewShippingScreen = () => {
   
   return (
     <>
-      <FlatList ListHeaderComponent={<AppHeader/>}
+      <FlatList ListHeaderComponent={<>
+        <AppHeader />
+        <Pressable onPress={() => {
+          updateToCompletedOrder(params.oInfo)
+        }}>
+          <Text>Completar</Text>
+        </Pressable>
+        </>}
         data={shippingByOrder}
         keyExtractor={(item) => item.shippingID}
         renderItem={({ item }) => <ShippingCard data={item} />}
