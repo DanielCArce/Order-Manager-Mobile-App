@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   },
   rowKey: {
     fontWeight:'500',
-    fontSize:22
+    fontSize: 22,
   },
   container: {
     borderWidth: 1,
