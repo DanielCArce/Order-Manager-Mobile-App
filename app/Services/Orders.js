@@ -67,7 +67,6 @@ export async function createOrder(token, orderInfo) {
   }
 }
 export async function updateOrderStatus(token, orderID) {
-    console.log({orderID})
   const abortController = new AbortController();
   const parsedBody = JSON.stringify({
     status: "COMPLETED",

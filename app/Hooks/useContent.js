@@ -14,7 +14,9 @@ function useContent() {
     const {state, dispatch} = useContext(ContentContext)
     const getOrders = () => {
         getAllOrders(AuthState.token)
-            .then((orders) => dispatch({ type: ContentActions.ADD_ORDERS, payload: orders }))
+            .then((orders) => dispatch({ type: ContentActions.ADD_ORDERS, payload: orders })).finally(() => {
+                dispatch({type:ContentActions.SET_FILTER, payload:'ALL'})
+            })
     }
     const getClients = () => {
         getAllClients(AuthState.token).then((companies)=> dispatch({type: ContentActions.ADD_CLIENTS, payload: companies}))
@@ -68,7 +70,6 @@ function useContent() {
     }
     const updateToCompletedOrder = (payload) => {
         updateOrderStatus(AuthState.token, payload).then((orderUpdated) => {
-            console.log({orderUpdated})
             dispatch({
                 type: ContentActions.UPDATE_ORDER_STATUS,
                 payload: orderUpdated

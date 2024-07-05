@@ -47,7 +47,7 @@ function reducer(state, action) {
             return {
                 ...state,
                 orders: state.orders.map((order) => {
-                    console.log({orderReducer:order})
+                    
                     if (order.client.id == payload.id) {
                         return {
                             ...order,
@@ -57,7 +57,7 @@ function reducer(state, action) {
                     return order
                 }),
                 clients: state.clients.map((client, ind) => {
-                    console.log({client, payload})
+                    
                     if (client.id == payload.id) {
                         return payload
                     }
@@ -86,7 +86,7 @@ function reducer(state, action) {
                 shippings:[...state.shippings, payload]
             }
         case ContentActions.SET_FILTER:
-            console.log({ payload, ord: state.orders })
+            
             if (payload == 'ALL') {
                 return {
                 ...state,
@@ -109,7 +109,6 @@ function reducer(state, action) {
                 }
             }
         case ContentActions.UPDATE_ORDER_STATUS:
-            console.log({payload})
             return {
                 ...state,
                 orders: state.orders.map((corder) => {
