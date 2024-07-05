@@ -26,7 +26,7 @@ const OrderCard = ({ orderInfo }) => {
       </View>
       <View style={styles.rowsInfo}>
         <View style={{gap:15, justifyContent:'space-between'}}>
-          <Text style={styles.rowKey}>{ orderInfo.client.name}</Text>
+          <Text style={styles.rowKey}>{ orderInfo.client.name.slice(0,15)}</Text>
           <Text>Fecha: {formatDate(orderInfo.date)}</Text>
           <Text>{orderInfo.items.length } articulos</Text>
         </View>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   rowsInfo: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   rowKey: {
     fontWeight:'500',
