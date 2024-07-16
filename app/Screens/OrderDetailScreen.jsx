@@ -23,7 +23,6 @@ const OrderDetailScreen = () => {
     <>
       <AppHeader />
       <View style={{ paddingHorizontal: 8, paddingVertical: 25, backgroundColor:'#f3f3f3' }} ref={orderRef} collapsable={false}>
-        {/* <Text>OrderDetailScreen {JSON.stringify(ContentState)}</Text> */}
         <View
           style={{
             alignContent: "space-between",
@@ -82,7 +81,8 @@ const OrderDetailScreen = () => {
               <Text>Subtotal</Text>
             </View>
                   </View>
-                  <FlatList data={ContentState.order.items} renderItem={({ item }) => {
+                  <FlatList data={ContentState.order.items} renderItem={({index, item }) => {
+
                       return (
                           <View
                               key={item.id}
