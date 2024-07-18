@@ -9,7 +9,7 @@ const RenewShippingScreen = () => {
   const [shippingByOrder, setShippingByOrder] = useState([]);
   const { ContentState, updateToCompletedOrder } = useContent();
   useEffect(function () {
-    let preShips = ContentState.shippings.filter((item, index) => {
+    let preShips = ContentState.shippings?.filter((item, index) => {
       return item.orderID == params.oInfo;
     });
     setShippingByOrder(preShips);
