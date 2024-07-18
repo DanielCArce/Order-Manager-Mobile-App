@@ -6,8 +6,11 @@ export const calculateUnidPrice = (size,unid, pricePerInch) => {
         }
         if (unid == "Paquete") {
             return ((size * pricePerInch) / 2)
-        }
-        return ((size * pricePerInch) * item.quantity)
+    }
+    if (unid == "Par") {
+        return ((size * pricePerInch) / 144)
+    }
+        return ((size * pricePerInch))
 }
 export const calculateSubtotalPerLine = (item, pricePerInch) => {
         return calculateUnidPrice(item.size, item.unid, pricePerInch) * item.quantity
