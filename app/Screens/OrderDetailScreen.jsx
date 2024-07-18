@@ -81,26 +81,26 @@ const OrderDetailScreen = () => {
               <Text>Subtotal</Text>
             </View>
                   </View>
-                  <FlatList data={ContentState.order.items} renderItem={({index, item }) => {
-
-                      return (
+          <ScrollView>
+            {ContentState.order.items.map((itm) => {
+              return (
                           <View
-                              key={item.id}
+                              key={itm.id}
                               style={{
                                   flexDirection: "row",
                                   justifyContent: "space-between",
                               }}
                           >
-                              <Text>{`${item.unid.slice(0, 3)} ${item.description
-                                  } ${item.type.slice(0, 3)} ${item.size}\"`}</Text>
+                              <Text>{`${itm.unid.slice(0, 3)} ${itm.description
+                                  } ${itm.type.slice(0, 3)} ${itm.size}\"`}</Text>
                               <View>
-                                  <Text>{item.quantity}</Text>
+                                  <Text>{itm.quantity}</Text>
                               </View>
                               <View>
                                   <Text>
                                       {formatNumbers(calculateUnidPrice(
-                                          item.size,
-                                          item.unid,
+                                          itm.size,
+                                          itm.unid,
                                           ContentState.order.pricePerInch
                                       ))}
                                   </Text>
@@ -108,15 +108,16 @@ const OrderDetailScreen = () => {
                               <View>
                                   <Text>
                                       {formatNumbers(calculateSubtotalPerLine(
-                                          item,
+                                          itm,
                                           ContentState.order.pricePerInch
                                       ))}
                                   </Text>
                               </View>
                           </View>
                       );
-                  }} />
-
+            })
+            }
+                  </ScrollView>
           <View style={{ alignItems: "flex-end", marginTop: 5 }}>
                       {calculateTotal(
                           ContentState.order.items,
